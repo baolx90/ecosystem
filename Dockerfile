@@ -1,123 +1,130 @@
-FROM openjdk:11-jdk AS jdk
+FROM python:3.10-bullseye as spark-base
 
-FROM python:3.11
+ARG SPARK_VERSION=3.5.0
+ARG HADOOP_VERSION=3.3.6
+ARG HBASE_VERSION=2.5.5
+ARG HIVE_VERSION=3.1.3
+ARG ZK_VERSION=3.9.1
 
-USER root
 
-# --------------------------------------------------------
-# JAVA
-# --------------------------------------------------------
-RUN apt update
-RUN apt-get install -y --no-install-recommends \
-    python3-launchpadlib \
-    software-properties-common
-# RUN add-apt-repository ppa:openjdk-r/ppa
-# RUN apt update
-# RUN apt install -y --no-install-recommends \
-#     openjdk-8-jdk
-# For AMD based architecture use
-# ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
-COPY --from=jdk /usr/local/openjdk-11 /usr/lib/jvm/java-11-openjdk-arm64/
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64/
+# Install tools required by the OS
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+      sudo \
+      curl \
+      vim \
+      unzip \
+      rsync \
+      openjdk-11-jdk \
+      build-essential \
+      software-properties-common \
+      ssh && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-# --------------------------------------------------------
-# HADOOP
-# --------------------------------------------------------
-ENV HADOOP_VERSION=3.3.6
-ENV HADOOP_URL=https://downloads.apache.org/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
-ENV HADOOP_PREFIX=/opt/hadoop-$HADOOP_VERSION
-ENV HADOOP_CONF_DIR=/etc/hadoop
-ENV MULTIHOMED_NETWORK=1
-ENV USER=root
-ENV HADOOP_HOME=/opt/hadoop-$HADOOP_VERSION
-ENV PATH $HADOOP_PREFIX/bin/:$PATH
-ENV PATH $HADOOP_HOME/bin/:$PATH
+# Setup the directories for our Spark and Hadoop installations
+ENV SPARK_HOME=${SPARK_HOME:-"/opt/spark"}
+ENV HADOOP_HOME=${HADOOP_HOME:-"/opt/hadoop"}
+ENV HBASE_HOME=${HBASE_HOME:-"/opt/hbase"}
+ENV HIVE_HOME=${HIVE_HOME:-"/opt/hive"}
+ENV ZK_HOME=${ZK_HOME:-"/opt/zookeeper"}
 
-RUN set -x \
-    && curl -fSL "$HADOOP_URL" -o /tmp/hadoop.tar.gz \
-    && tar -xvf /tmp/hadoop.tar.gz -C /opt/ \
-    && rm /tmp/hadoop.tar.gz*
+RUN mkdir -p ${HADOOP_HOME} 
+RUN mkdir -p ${SPARK_HOME} 
+RUN mkdir -p ${HBASE_HOME} 
+RUN mkdir -p ${HIVE_HOME}
+RUN mkdir -p ${ZK_HOME}
 
-RUN ln -s /opt/hadoop-$HADOOP_VERSION/etc/hadoop /etc/hadoop
-RUN mkdir /opt/hadoop-$HADOOP_VERSION/logs
-RUN mkdir /hadoop-data
 
-USER root
+WORKDIR ${SPARK_HOME}
 
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod a+x /entrypoint.sh
+# Download and install Hadoop
+RUN curl https://dlcdn.apache.org/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz -o hadoop-${HADOOP_VERSION}-bin.tar.gz \
+ && tar xfz hadoop-${HADOOP_VERSION}-bin.tar.gz --directory ${HADOOP_HOME} --strip-components 1 \
+ && rm -rf hadoop-${HADOOP_VERSION}-bin.tar.gz
 
-COPY conf/core-site.xml $HADOOP_CONF_DIR/core-site.xml
-COPY conf/hdfs-site.xml $HADOOP_CONF_DIR/hdfs-site.xml
-COPY conf/mapred-site.xml $HADOOP_CONF_DIR/mapred-site.xml
-COPY conf/yarn-site.xml $HADOOP_CONF_DIR/yarn-site.xml
+# Download and install Hbase
+RUN curl http://apache.mirror.gtcomm.net/hbase/stable/hbase-${HBASE_VERSION}-bin.tar.gz -o hbase-${HBASE_VERSION}-bin.tar.gz \
+ && tar xvzf hbase-${HBASE_VERSION}-bin.tar.gz --directory ${HBASE_HOME} --strip-components 1 \
+ && rm -rf hbase-${HBASE_VERSION}-bin.tar.gz
 
-# ADD hadoop.env /hadoop.env
+# Download and install Spark
+RUN curl https://dlcdn.apache.org/spark/spark-{$SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz -o spark-${SPARK_VERSION}-bin-hadoop3.tgz \
+ && tar xvzf spark-${SPARK_VERSION}-bin-hadoop3.tgz --directory ${SPARK_HOME} --strip-components 1 \
+ && rm -rf spark-${SPARK_VERSION}-bin-hadoop3.tgz
 
-# RUN set -x && cd / && ./entrypoint.sh
 
-# --------------------------------------------------------
-# SPARK
-# --------------------------------------------------------
+# Download and install Hive
+RUN curl https://archive.apache.org/dist/hive/hive-{$HIVE_VERSION}/apache-hive-{$HIVE_VERSION}-bin.tar.gz -o apache-hive-{$HIVE_VERSION}-bin.tar.gz \
+ && tar xvzf apache-hive-{$HIVE_VERSION}-bin.tar.gz --directory ${HIVE_HOME} --strip-components 1 \
+ && rm -rf apache-hive-{$HIVE_VERSION}-bin.tar.gz
 
-ENV SPARK_VERSION=3.5.0 \
-HADOOP_VERSION=3 \
-SPARK_HOME=/opt/spark \
-PYTHONHASHSEED=1
 
-RUN wget --no-verbose -O apache-spark.tgz "https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz" \
-&& mkdir -p /opt/spark \
-&& tar -xf apache-spark.tgz -C /opt/spark --strip-components=1 \
-&& rm apache-spark.tgz
+# Download and install zookeeper
+RUN curl https://archive.apache.org/dist/zookeeper/zookeeper-${ZK_VERSION}/apache-zookeeper-${ZK_VERSION}-bin.tar.gz -o apache-zookeeper-${ZK_VERSION}-bin.tar.gz \
+ && tar xvzf apache-zookeeper-${ZK_VERSION}-bin.tar.gz --directory ${ZK_HOME} --strip-components 1 \
+ && rm -rf apache-zookeeper-${ZK_VERSION}-bin.tar.gz
 
-ADD conf/core-site.xml $SPARK_HOME/conf
-ADD conf/yarn-site.xml $SPARK_HOME/conf
 
-#=========
-# INSTALL PYTHON DEPS
-#=========
-RUN apt-get update && add-apt-repository ppa:deadsnakes/ppa \
-  && apt-get install -y --no-install-recommends \
-         gcc \
-         g++ \
-         subversion \
-         python3-dev \
-         gfortran \
-         build-essential \
-         libopenblas-dev \
-         liblapack-dev \
-         libqpdf-dev \
-         pkg-config \
-         libzbar-dev \
-         python3-dev \
-         libpython3-dev \
-         qpdf \
-         xvfb \
-         gconf-service \
-         libasound2 \
-         libatk1.0-0 \
-         libcairo2 \
-         libcups2 \
-         libfontconfig1 \
-         libgdk-pixbuf2.0-0 \
-         libgtk-3-0 \
-         libnspr4 \
-         libpango-1.0-0 \
-         libxss1 \
-         fonts-liberation \
-         libappindicator1 \
-         libnss3 \
-         lsb-release \
-         xdg-utils \
-         wget \
-  && apt-get autoremove -yqq --purge \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+FROM spark-base as pyspark
 
-RUN pip install --default-timeout=100 --upgrade pip
-RUN pip install pikepdf Cython numpy wheel setuptools --force-reinstall
+# Install python deps
+COPY requirements/requirements.txt .
+RUN pip3 install -r requirements.txt
 
-#ADD requirements.txt /requirements.txt
+# Set JAVA_HOME environment variable
+ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 
-# run install
-#RUN pip install -r /requirements.txt
+# Add the Spark and Hadoop bin and sbin to the PATH variable.
+# Also add $JAVA_HOME/bin to the PATH
+ENV PATH="$SPARK_HOME/sbin:/opt/spark/bin:${PATH}"
+ENV PATH="$HADOOP_HOME/bin:$HADOOP_HOME/sbin:${PATH}"
+ENV PATH="$HBASE_HOME/bin:$HBASE_HOME/sbin:${PATH}"
+ENV PATH="${PATH}:${JAVA_HOME}/bin"
+ENV PATH="${PATH}:$HIVE_HOME/bin"
+
+# Setup Spark related environment variables
+ENV SPARK_MASTER="spark://hadoop-master:7077"
+ENV SPARK_MASTER_HOST hadoop-master
+ENV SPARK_MASTER_PORT 7077
+ENV PYSPARK_PYTHON python3
+ENV HADOOP_CONF_DIR="$HADOOP_HOME/etc/hadoop"
+
+# Add Hadoop native library path to the dynamic link library path
+ENV LD_LIBRARY_PATH="$HADOOP_HOME/lib/native:${LD_LIBRARY_PATH}"
+
+# Set user for HDFS and Yarn (for production probably not smart to put root)
+ENV HDFS_NAMENODE_USER="root"
+ENV HDFS_DATANODE_USER="root"
+ENV HDFS_SECONDARYNAMENODE_USER="root"
+ENV YARN_RESOURCEMANAGER_USER="root"
+ENV YARN_NODEMANAGER_USER="root"
+
+# Add JAVA_HOME to haddop-env.sh
+RUN echo "export JAVA_HOME=${JAVA_HOME}" >> "$HADOOP_HOME/etc/hadoop/hadoop-env.sh"
+
+# COPY the appropriate configuration files to their appropriate locations
+COPY conf/spark/* "$SPARK_HOME/conf/"
+COPY conf/hbase/* "$HBASE_HOME/conf"
+COPY conf/hive/* "$HIVE_HOME/conf"
+COPY conf/hadoop/* "$HADOOP_HOME/etc/hadoop/"
+
+# Make the binaries and scripts executable and set the PYTHONPATH environment variable
+RUN chmod u+x /opt/spark/sbin/* && \
+    chmod u+x /opt/spark/bin/*
+
+ENV PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
+#ENV PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.9.5-src.zip:$PYTHONPATH
+
+RUN ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa && \
+  cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
+  chmod 600 ~/.ssh/authorized_keys
+
+COPY ssh_config ~/.ssh/config
+
+# Copy appropriate entrypoint script
+COPY entrypoint.sh entrypoint.sh
+
+EXPOSE 22
+
+ENTRYPOINT ["./entrypoint.sh"]
