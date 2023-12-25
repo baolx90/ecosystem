@@ -164,33 +164,6 @@ RUN if [ ! -f "${ZK_PACKAGE}" ]; then curl --progress-bar -L --retry 3 \
   && mv "${USR_PROGRAM_DIR}/apache-zookeeper-${ZK_VERSION}-bin" "${ZK_HOME}" \
   && chown -R root:root "${ZK_HOME}"
 
-# Tez
-ENV TEZ_VERSION=0.9.2
-ENV TEZ_HOME=/usr/program/tez
-ENV TEZ_PACKAGE="apache-tez-${TEZ_VERSION}-bin.tar.gz"
-ENV TEZ_CONF_DIR=${HADOOP_CONF_DIR}
-ENV TEZ_JARS=${TEZ_HOME}/*:${TEZ_HOME}/lib/*
-ENV HADOOP_CLASSPATH=${TEZ_CONF_DIR}:${TEZ_JARS}:${HADOOP_CLASSPATH}
-
-# Tez Package
-RUN if [ ! -f "${TEZ_PACKAGE}" ]; then curl --progress-bar -L --retry 3 \
-  "https://dlcdn.apache.org/tez/${TEZ_VERSION}/apache-tez-${TEZ_VERSION}-bin.tar.gz" -o "${USR_PROGRAM_DIR}/source_dir/${TEZ_PACKAGE}" ; fi \
-  && tar -xf "${USR_PROGRAM_DIR}/source_dir/${TEZ_PACKAGE}" -C "${USR_PROGRAM_DIR}/" \
-  && mv "${USR_PROGRAM_DIR}/apache-tez-${TEZ_VERSION}-bin" "${TEZ_HOME}" \
-  && chown -R root:root "${TEZ_HOME}" \
-  && mkdir -p "${TEZ_HOME}/logs" 
-
-# Hive Hudi support
-ENV HIVE_AUX_JARS_PATH=/usr/program/hive/lib/hudi-hadoop-mr-bundle-0.10.0.jar,/usr/program/hive/lib/hudi-hive-sync-bundle-0.10.0.jar
-# Hudi
-ENV HUDI_VERSION=0.10.0
-
-# HUDI Package
-RUN cp "${USR_PROGRAM_DIR}/source_dir/hudi-hive-sync-bundle-0.10.0.jar" "${HIVE_HOME}/lib/" \
- && cp "${USR_PROGRAM_DIR}/source_dir/hudi-hadoop-mr-bundle-0.10.0.jar" "${HIVE_HOME}/lib/" \
- && cp "${USR_PROGRAM_DIR}/source_dir/hudi-spark3-bundle_2.12-0.10.0.jar" "${SPARK_HOME}/jars/" \
- && cp "${USR_PROGRAM_DIR}/source_dir/hudi-flink-bundle_2.12-0.10.0.jar" "${FLINK_HOME}/lib/"
-
 # Clean up 
 RUN rm -rf "${USR_PROGRAM_DIR}/source_dir/*" \
     && rm -rf "${HIVE_HOME}/examples" \
@@ -211,17 +184,12 @@ COPY conf/hadoop/hdfs-site.xml "${HADOOP_CONF_DIR}"/
 COPY conf/hadoop/mapred-site.xml "${HADOOP_CONF_DIR}"/
 COPY conf/hadoop/workers "${HADOOP_CONF_DIR}"/
 COPY conf/hadoop/yarn-site.xml "${HADOOP_CONF_DIR}"/
-COPY conf/tez/tez-site.xml "${HADOOP_CONF_DIR}"/
 
 # Hive setup
 COPY conf/hive/hive-site.xml "${HIVE_CONF_DIR}"/
-COPY conf/hive/hive-env.sh "${HIVE_CONF_DIR}"/
-COPY conf/hive/hive-log4j2.properties "${HIVE_CONF_DIR}"/
+#COPY conf/hive/hive-env.sh "${HIVE_CONF_DIR}"/
+#COPY conf/hive/hive-log4j2.properties "${HIVE_CONF_DIR}"/
 COPY jdbc_drivers/* "${HIVE_HOME}/lib/"
-
-# it is a pity than two scripts below would not work, then script for same goat have been added in entrypoint.sh file.
-RUN for jar in `ls $TEZ_HOME | grep jar`; do export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$TEZ_HOME/$jar; done 
-RUN for jar in `ls $TEZ_HOME/lib`; do export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$TEZ_HOME/lib/$jar; done
 
 # Spark setup
 COPY conf/hadoop/core-site.xml "${SPARK_CONF_DIR}"/

@@ -5,6 +5,8 @@ services:
     hostname: hivemetastore
     environment:
       POSTGRES_PASSWORD: new_password
+    expose:
+      - 5432
     ports:
       # JDBC 
       - 5432:5432
