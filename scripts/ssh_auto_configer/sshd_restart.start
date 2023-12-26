@@ -1,3 +1,0 @@
-#!/bin/bash
-nohup /etc/init.d/sshd restart
-echo `date` > /usr/sshd_restart_time
