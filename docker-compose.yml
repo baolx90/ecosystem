@@ -162,7 +162,7 @@ services:
     build: .
     hostname: worker1
     depends_on:
-      - hivemetastore
+      - master
     environment:
       HADOOP_NODE: datanode
       HADOOP_NNAMENADE_HOSTNAME: master
@@ -211,7 +211,7 @@ services:
     build: .
     hostname: worker2
     depends_on:
-      - hivemetastore
+      - master
     environment:
       HADOOP_NNAMENADE_HOSTNAME: master
       HADOOP_SERVERS_HOSTNAME: master worker1 worker2
