@@ -113,6 +113,7 @@ services:
       SPARK_MASTER: yarn
       LOCAL_DIR_WHITELIST: /data/batches/
       ENABLE_HIVE_CONTEXT: "false"
+      HIVE_CONFIGURE: yes, please
     expose:
       - 1-65535
     ports:
