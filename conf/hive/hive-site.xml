@@ -30,7 +30,7 @@
     </property>
     <property>
         <name>javax.jdo.option.ConnectionURL</name>
-        <value>jdbc:postgresql://hivemetastore:5432/hivemetastoredb?createDatabaseIfNotExist=true</value>
+        <value>jdbc:postgresql://192.168.90.22:5432/hivemetastoredb?createDatabaseIfNotExist=true</value>
     </property>
     <property>
         <name>javax.jdo.option.ConnectionUserName</name>
@@ -38,7 +38,7 @@
     </property>
     <property>
         <name>javax.jdo.option.ConnectionPassword</name>
-        <value>new_password</value>
+        <value>d9enrFU5wc6H</value>
     </property>
 
     <!--    https://cwiki.apache.org/confluence/display/Hive/Hive+on+Spark%3A+Getting+Started -->
