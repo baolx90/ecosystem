@@ -1,0 +1,459 @@
+Wed Dec 27 10:49:32 CST 2023 Starting regionserver on worker1
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 62919
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1048576
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) unlimited
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+2023-12-27 02:49:35,880 INFO  [main] regionserver.HRegionServer: STARTING executorService HRegionServer
+2023-12-27 02:49:35,887 INFO  [main] util.VersionInfo: HBase 2.3.6
+2023-12-27 02:49:35,887 INFO  [main] util.VersionInfo: Source code repository git://7257be94c61e/home/stack/hbase-rm/output/hbase revision=7414579f2620fca6b75146c29ab2726fc4643ac9
+2023-12-27 02:49:35,888 INFO  [main] util.VersionInfo: Compiled by stack on Wed Jul 28 22:24:42 UTC 2021
+2023-12-27 02:49:35,888 INFO  [main] util.VersionInfo: From source with checksum eb11554aeb325ccaf65a9b469efe7ddcdc0bb0eec35a53f77d0c5c09eac5722007a05ef62349c7afb8005ed1abe32e772f99bb2137194641f5ce51d525aa5634
+2023-12-27 02:49:37,184 INFO  [main] util.ServerCommandLine: hbase.tmp.dir: /tmp/hbase-root
+2023-12-27 02:49:37,184 INFO  [main] util.ServerCommandLine: hbase.rootdir: hdfs://master:9000/hbase
+2023-12-27 02:49:37,184 INFO  [main] util.ServerCommandLine: hbase.cluster.distributed: true
+2023-12-27 02:49:37,184 INFO  [main] util.ServerCommandLine: hbase.zookeeper.quorum: zoo1,zoo2,zoo3
+2023-12-27 02:49:37,185 INFO  [main] util.ServerCommandLine: env:PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/jvm/java-1.8-openjdk/bin:/usr/program/hadoop/bin:/usr/program/hadoop/sbin:/usr/program/hive/bin:/usr/program/hbase/bin:/usr/program/spark/bin
+2023-12-27 02:49:37,192 INFO  [main] util.ServerCommandLine: env:HADOOP_CONF_DIR=/usr/program/hadoop/etc/hadoop
+2023-12-27 02:49:37,193 INFO  [main] util.ServerCommandLine: env:ZK_VERSION=3.6.3
+2023-12-27 02:49:37,193 INFO  [main] util.ServerCommandLine: env:ZK_PACKAGE=apache-zookeeper-3.6.3-bin.tar.gz
+2023-12-27 02:49:37,193 INFO  [main] util.ServerCommandLine: env:ROOT_PWD=123456
+2023-12-27 02:49:37,193 INFO  [main] util.ServerCommandLine: env:USR_PROGRAM_DIR=/usr/program
+2023-12-27 02:49:37,193 INFO  [main] util.ServerCommandLine: env:HBASE_CONF_DIR=/usr/program/hbase/conf/
+2023-12-27 02:49:37,193 INFO  [main] util.ServerCommandLine: env:HADOOP_NNAMENADE_HOSTNAME=master
+2023-12-27 02:49:37,193 INFO  [main] util.ServerCommandLine: env:YARN_NODEMANAGER_USER=root
+2023-12-27 02:49:37,193 INFO  [main] util.ServerCommandLine: env:LD_LIBRARY_PATH=/usr/lib/jvm/java-1.8-openjdk/jre/lib/amd64/server:/usr/lib/jvm/java-1.8-openjdk/jre/lib/amd64:/usr/lib/jvm/java-1.8-openjdk/jre/../lib/amd64:/usr/program/hadoop/lib/native:
+2023-12-27 02:49:37,193 INFO  [main] util.ServerCommandLine: env:JVM_PID=228
+2023-12-27 02:49:37,193 INFO  [main] util.ServerCommandLine: env:HBASE_REST_OPTS=
+2023-12-27 02:49:37,193 INFO  [main] util.ServerCommandLine: env:HIVE_LOG_DIR=/usr/program/hive/logs
+2023-12-27 02:49:37,193 INFO  [main] util.ServerCommandLine: env:PWD=/usr/program
+2023-12-27 02:49:37,193 INFO  [main] util.ServerCommandLine: env:SPARK_MASTER_ADDRESS=spark://master:7077
+2023-12-27 02:49:37,194 INFO  [main] util.ServerCommandLine: env:ZOO_SERVERS_HOSTNAME=zoo1 zoo2 zoo3
+2023-12-27 02:49:37,194 INFO  [main] util.ServerCommandLine: env:HBASE_ROOT_LOGGER=INFO,RFA
+2023-12-27 02:49:37,195 INFO  [main] util.ServerCommandLine: env:PIP_DISABLE_PIP_VERSION_CHECK=1
+2023-12-27 02:49:37,196 INFO  [main] util.ServerCommandLine: env:HBASE_ENV_INIT=true
+2023-12-27 02:49:37,196 INFO  [main] util.ServerCommandLine: env:HIVE_HOME=/usr/program/hive
+2023-12-27 02:49:37,196 INFO  [main] util.ServerCommandLine: env:HBASE_MANAGES_ZK=false
+2023-12-27 02:49:37,197 INFO  [main] util.ServerCommandLine: env:SPARK_CONF_DIR=/usr/program/spark/conf
+2023-12-27 02:49:37,197 INFO  [main] util.ServerCommandLine: env:SED=sed
+2023-12-27 02:49:37,197 INFO  [main] util.ServerCommandLine: env:HADOOP_SERVERS_HOSTNAME=master worker1 worker2
+2023-12-27 02:49:37,200 INFO  [main] util.ServerCommandLine: env:HADOOP_HOME=/usr/program/hadoop
+2023-12-27 02:49:37,200 INFO  [main] util.ServerCommandLine: env:HBASE_NICENESS=0
+2023-12-27 02:49:37,200 INFO  [main] util.ServerCommandLine: env:HBASE_PACKAGE=hbase-2.3.6-bin.tar.gz
+2023-12-27 02:49:37,200 INFO  [main] util.ServerCommandLine: env:HADOOP_PACKAGE=hadoop-3.2.3.tar.gz
+2023-12-27 02:49:37,200 INFO  [main] util.ServerCommandLine: env:HBASE_SECURITY_LOGGER=INFO,RFAS
+2023-12-27 02:49:37,200 INFO  [main] util.ServerCommandLine: env:HBASE_OPTS=-XX:+UseConcMarkSweepGC -Djava.util.logging.config.class=org.apache.hadoop.hbase.logging.JulToSlf4jInitializer   -Dhbase.log.dir=/usr/program/hbase/logs -Dhbase.log.file=hbase--regionserver-worker1.log -Dhbase.home.dir=/usr/program/hbase -Dhbase.id.str= -Dhbase.root.logger=INFO,RFA -Dhbase.security.logger=INFO,RFAS
+2023-12-27 02:49:37,201 INFO  [main] util.ServerCommandLine: env:HDFS_DATANODE_USER=root
+2023-12-27 02:49:37,202 INFO  [main] util.ServerCommandLine: env:SHLVL=1
+2023-12-27 02:49:37,202 INFO  [main] util.ServerCommandLine: env:SPARK_LOG_DIR=/usr/program/spark/logs
+2023-12-27 02:49:37,202 INFO  [main] util.ServerCommandLine: env:HBASE_LOGFILE=hbase--regionserver-worker1.log
+2023-12-27 02:49:37,205 INFO  [main] util.ServerCommandLine: env:HBASE_REGIONSERVER_HOSTNAME=worker1 worker2
+2023-12-27 02:49:37,205 INFO  [main] util.ServerCommandLine: env:SPARK_VERSION=3.0.0
+2023-12-27 02:49:37,205 INFO  [main] util.ServerCommandLine: env:SPARK_PACKAGE=spark-3.0.0-bin-hadoop3.2.tgz
+2023-12-27 02:49:37,205 INFO  [main] util.ServerCommandLine: env:JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+2023-12-27 02:49:37,206 INFO  [main] util.ServerCommandLine: env:SPARK_LOCAL_HOSTNAME=worker1
+2023-12-27 02:49:37,206 INFO  [main] util.ServerCommandLine: env:ZK_CONF_DIR=/usr/program/zookeeper/conf
+2023-12-27 02:49:37,206 INFO  [main] util.ServerCommandLine: env:HADOOP_NODE=datanode
+2023-12-27 02:49:37,206 INFO  [main] util.ServerCommandLine: env:SPARK_LOCAL_IP=172.28.1.2
+2023-12-27 02:49:37,207 INFO  [main] util.ServerCommandLine: env:YARN_RESOURCEMANAGER_USER=root
+2023-12-27 02:49:37,208 INFO  [main] util.ServerCommandLine: env:HADOOP_CLASSPATH=/usr/program/hadoop/share/hadoop/tools/lib/*:/usr/program/hive/lib/*
+2023-12-27 02:49:37,208 INFO  [main] util.ServerCommandLine: env:SPARK_HOME=/usr/program/spark
+2023-12-27 02:49:37,209 INFO  [main] util.ServerCommandLine: env:USR_BIN_DIR=/usr/program/source_dir
+2023-12-27 02:49:37,209 INFO  [main] util.ServerCommandLine: env:HADOOP_VERSION=3.2.3
+2023-12-27 02:49:37,209 INFO  [main] util.ServerCommandLine: env:HBASE_VERSION=2.3.6
+2023-12-27 02:49:37,210 INFO  [main] util.ServerCommandLine: env:HADOOP_MAPRED_HOME=/usr/program/hadoop
+2023-12-27 02:49:37,210 INFO  [main] util.ServerCommandLine: env:HADOOP_DATANODE_UI_PORT=9864
+2023-12-27 02:49:37,210 INFO  [main] util.ServerCommandLine: env:HIVE_PACKAGE=apache-hive-3.1.2-bin.tar.gz
+2023-12-27 02:49:37,211 INFO  [main] util.ServerCommandLine: env:HADOOP_COMMON_HOME=/usr/program/hadoop
+2023-12-27 02:49:37,212 INFO  [main] util.ServerCommandLine: env:PYTHONHASHSEED=0
+2023-12-27 02:49:37,212 INFO  [main] util.ServerCommandLine: env:HBASE_ROLE=regionserver
+2023-12-27 02:49:37,214 INFO  [main] util.ServerCommandLine: env:HIVE_CONF_DIR=/usr/program/hive/conf
+2023-12-27 02:49:37,215 INFO  [main] util.ServerCommandLine: env:HBASE_DISABLE_HADOOP_CLASSPATH_LOOKUP=true
+2023-12-27 02:49:37,215 INFO  [main] util.ServerCommandLine: env:ZK_HOME=/usr/program/zookeeper
+2023-12-27 02:49:37,219 INFO  [main] util.ServerCommandLine: env:PYTHONIOENCODING=UTF-8
+2023-12-27 02:49:37,220 INFO  [main] util.ServerCommandLine: env:HBASE_IDENT_STRING=
+2023-12-27 02:49:37,220 INFO  [main] util.ServerCommandLine: env:SPARK_DIST_CLASSPATH=/usr/program/hadoop/etc/hadoop:/usr/program/hadoop/share/hadoop/tools/lib/*:/usr/program/hadoop/share/hadoop/common/lib/*:/usr/program/hadoop/share/hadoop/common/*:/usr/program/hadoop/share/hadoop/hdfs:/usr/program/hadoop/share/hadoop/hdfs/lib/*:/usr/program/hadoop/share/hadoop/hdfs/*:/usr/program/hadoop/share/hadoop/mapreduce/lib/*:/usr/program/hadoop/share/hadoop/mapreduce/*:/usr/program/hadoop/share/hadoop/yarn:/usr/program/hadoop/share/hadoop/yarn/lib/*:/usr/program/hadoop/share/hadoop/yarn/*
+2023-12-27 02:49:37,223 INFO  [main] util.ServerCommandLine: env:HBASE_ZNODE_FILE=/tmp/hbase--regionserver.znode
+2023-12-27 02:49:37,224 INFO  [main] util.ServerCommandLine: env:HBASE_MASTER_HOSTNAME=master
+2023-12-27 02:49:37,224 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_PREFIX=hbase--regionserver-worker1
+2023-12-27 02:49:37,225 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_DIR=/usr/program/hbase/logs
+2023-12-27 02:49:37,226 INFO  [main] util.ServerCommandLine: ttp-2.7.5.jar:/usr/program/hbase/lib/okio-1.6.0.jar:/usr/program/hbase/lib/osgi-resource-locator-1.0.1.jar:/usr/program/hbase/lib/paranamer-2.3.jar:/usr/program/hbase/lib/protobuf-java-2.5.0.jar:/usr/program/hbase/lib/snappy-java-1.0.5.jar:/usr/program/hbase/lib/spymemcached-2.12.2.jar:/usr/program/hbase/lib/stax2-api-3.1.4.jar:/usr/program/hbase/lib/validation-api-1.1.0.Final.jar:/usr/program/hbase/lib/woodstox-core-5.0.3.jar:/usr/program/hbase/lib/xmlenc-0.52.jar:/usr/program/hbase/lib/zookeeper-3.5.7.jar:/usr/program/hbase/lib/zookeeper-jute-3.5.7.jar:/usr/program/hbase/lib/client-facing-thirdparty/audience-annotations-0.5.0.jar:/usr/program/hbase/lib/client-facing-thirdparty/commons-logging-1.2.jar:/usr/program/hbase/lib/client-facing-thirdparty/htrace-core4-4.2.0-incubating.jar:/usr/program/hbase/lib/client-facing-thirdparty/log4j-1.2.17.jar:/usr/program/hbase/lib/client-facing-thirdparty/slf4j-api-1.7.30.jar:/usr/program/hbase/lib/client-facing-thirdparty/slf4j-log4j12-1.7.30.jar
+2023-12-27 02:49:37,226 INFO  [main] util.ServerCommandLine: env:HDFS_NAMENODE_USER=root
+2023-12-27 02:49:37,226 INFO  [main] util.ServerCommandLine: env:SPARK_MASTER_HOST=172.28.1.1
+2023-12-27 02:49:37,226 INFO  [main] util.ServerCommandLine: env:HIVE_VERSION=3.1.2
+2023-12-27 02:49:37,226 INFO  [main] util.ServerCommandLine: env:HBASE_AUTOSTART_FILE=/tmp/hbase--regionserver.autostart
+2023-12-27 02:49:37,227 INFO  [main] util.ServerCommandLine: env:HOSTNAME=worker1
+2023-12-27 02:49:37,229 INFO  [main] util.ServerCommandLine: env:GREP=grep
+2023-12-27 02:49:37,230 INFO  [main] util.ServerCommandLine: env:SPARK_HADOOP_VERSION=3.2
+2023-12-27 02:49:37,230 INFO  [main] util.ServerCommandLine: env:HADOOP_LOG_DIR=/usr/program/hadoop/logs
+2023-12-27 02:49:37,230 INFO  [main] util.ServerCommandLine: env:SPARK_PUBLIC_DNS=localhost
+2023-12-27 02:49:37,233 INFO  [main] util.ServerCommandLine: env:SPARK_WORKER_PORT=8881
+2023-12-27 02:49:37,233 INFO  [main] util.ServerCommandLine: env:HBASE_HOME=/usr/program/hbase
+2023-12-27 02:49:37,233 INFO  [main] util.ServerCommandLine: env:HBASE_THRIFT_OPTS=
+2023-12-27 02:49:37,233 INFO  [main] util.ServerCommandLine: env:HDFS_SECONDARYNAMENODE_USER=root
+2023-12-27 02:49:37,238 INFO  [main] util.ServerCommandLine: env:HOME=/root
+2023-12-27 02:49:37,238 INFO  [main] util.ServerCommandLine: env:SPARK_WORKER_WEBUI_PORT=8981
+2023-12-27 02:49:37,238 INFO  [main] util.ServerCommandLine: env:MALLOC_ARENA_MAX=4
+2023-12-27 02:49:37,244 INFO  [main] util.ServerCommandLine: vmName=OpenJDK 64-Bit Server VM, vmVendor=IcedTea, vmVersion=25.275-b01
+2023-12-27 02:49:37,245 INFO  [main] util.ServerCommandLine: vmInputArguments=[-Dproc_regionserver, -XX:OnOutOfMemoryError=kill -9 %p, -XX:+UseConcMarkSweepGC, -Djava.util.logging.config.class=org.apache.hadoop.hbase.logging.JulToSlf4jInitializer, -Dhbase.log.dir=/usr/program/hbase/logs, -Dhbase.log.file=hbase--regionserver-worker1.log, -Dhbase.home.dir=/usr/program/hbase, -Dhbase.id.str=, -Dhbase.root.logger=INFO,RFA, -Dhbase.security.logger=INFO,RFAS]
+2023-12-27 02:49:39,001 INFO  [main] metrics.MetricRegistries: Loaded MetricRegistries class org.apache.hadoop.hbase.metrics.impl.MetricRegistriesImpl
+2023-12-27 02:49:39,163 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2023-12-27 02:49:39,837 INFO  [main] regionserver.RSRpcServices: regionserver/worker1:16020 server-side Connection retries=45
+2023-12-27 02:49:39,897 INFO  [main] ipc.RpcExecutor: Instantiated default.FPBQ.Fifo with queueClass=class java.util.concurrent.LinkedBlockingQueue; numCallQueues=3, maxQueueLength=300, handlerCount=30
+2023-12-27 02:49:39,910 INFO  [main] ipc.RpcExecutor: Instantiated priority.RWQ.Fifo with queueClass=class java.util.concurrent.LinkedBlockingQueue; numCallQueues=2, maxQueueLength=300, handlerCount=20
+2023-12-27 02:49:39,924 INFO  [main] ipc.RWQueueRpcExecutor: priority.RWQ.Fifo writeQueues=1 writeHandlers=2 readQueues=1 readHandlers=18 scanQueues=0 scanHandlers=0
+2023-12-27 02:49:39,926 INFO  [main] ipc.RpcExecutor: Instantiated replication.FPBQ.Fifo with queueClass=class java.util.concurrent.LinkedBlockingQueue; numCallQueues=1, maxQueueLength=300, handlerCount=3
+2023-12-27 02:49:39,926 INFO  [main] ipc.RpcExecutor: Instantiated metaPriority.FPBQ.Fifo with queueClass=class java.util.concurrent.LinkedBlockingQueue; numCallQueues=1, maxQueueLength=300, handlerCount=1
+2023-12-27 02:49:40,459 INFO  [main] ipc.RpcServerFactory: Creating org.apache.hadoop.hbase.ipc.NettyRpcServer hosting hbase.pb.ClientService, hbase.pb.AdminService
+2023-12-27 02:49:40,723 INFO  [main] Configuration.deprecation: hbase.ipc.server.reservoir.initial.buffer.size is deprecated. Instead, use hbase.server.allocator.buffer.size
+2023-12-27 02:49:40,724 INFO  [main] Configuration.deprecation: hbase.ipc.server.reservoir.initial.max is deprecated. Instead, use hbase.server.allocator.max.buffer.count
+2023-12-27 02:49:41,389 INFO  [main] ipc.NettyRpcServer: Bind to /172.28.1.2:16020
+2023-12-27 02:49:41,689 INFO  [main] Configuration.deprecation: hbase.offheapcache.minblocksize is deprecated. Instead, use hbase.blockcache.minblocksize
+2023-12-27 02:49:41,714 INFO  [main] hfile.BlockCacheFactory: Allocating BlockCache size=1.54 GB, blockSize=64 KB
+2023-12-27 02:49:44,480 INFO  [main] fs.HFileSystem: Added intercepting call to namenode#getBlockLocations so can do block reordering using class org.apache.hadoop.hbase.fs.HFileSystem$ReorderWALBlocks
+2023-12-27 02:49:44,528 INFO  [main] fs.HFileSystem: Added intercepting call to namenode#getBlockLocations so can do block reordering using class org.apache.hadoop.hbase.fs.HFileSystem$ReorderWALBlocks
+2023-12-27 02:49:44,618 INFO  [main] zookeeper.RecoverableZooKeeper: Process identifier=regionserver:16020 connecting to ZooKeeper ensemble=zoo1:2181,zoo2:2181,zoo3:2181
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: Client environment:zookeeper.version=3.5.7-f0fdd52973d373ffd9c86b81d99842dc2c7f660e, built on 02/10/2020 11:30 GMT
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: Client environment:host.name=worker1
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: Client environment:java.version=1.8.0_275
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: Client environment:java.vendor=IcedTea
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: Client environment:java.home=/usr/lib/jvm/java-1.8-openjdk/jre
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: ttp-2.7.5.jar:/usr/program/hbase/lib/okio-1.6.0.jar:/usr/program/hbase/lib/osgi-resource-locator-1.0.1.jar:/usr/program/hbase/lib/paranamer-2.3.jar:/usr/program/hbase/lib/protobuf-java-2.5.0.jar:/usr/program/hbase/lib/snappy-java-1.0.5.jar:/usr/program/hbase/lib/spymemcached-2.12.2.jar:/usr/program/hbase/lib/stax2-api-3.1.4.jar:/usr/program/hbase/lib/validation-api-1.1.0.Final.jar:/usr/program/hbase/lib/woodstox-core-5.0.3.jar:/usr/program/hbase/lib/xmlenc-0.52.jar:/usr/program/hbase/lib/zookeeper-3.5.7.jar:/usr/program/hbase/lib/zookeeper-jute-3.5.7.jar:/usr/program/hbase/lib/client-facing-thirdparty/audience-annotations-0.5.0.jar:/usr/program/hbase/lib/client-facing-thirdparty/commons-logging-1.2.jar:/usr/program/hbase/lib/client-facing-thirdparty/htrace-core4-4.2.0-incubating.jar:/usr/program/hbase/lib/client-facing-thirdparty/log4j-1.2.17.jar:/usr/program/hbase/lib/client-facing-thirdparty/slf4j-api-1.7.30.jar:/usr/program/hbase/lib/client-facing-thirdparty/slf4j-log4j12-1.7.30.jar
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: Client environment:java.library.path=/usr/lib/jvm/java-1.8-openjdk/jre/lib/amd64/server:/usr/lib/jvm/java-1.8-openjdk/jre/lib/amd64:/usr/lib/jvm/java-1.8-openjdk/jre/../lib/amd64:/usr/program/hadoop/lib/native::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: Client environment:java.io.tmpdir=/tmp
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: Client environment:java.compiler=<NA>
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: Client environment:os.name=Linux
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: Client environment:os.arch=amd64
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: Client environment:os.version=5.15.0-91-generic
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: Client environment:user.name=root
+2023-12-27 02:49:44,642 INFO  [main] zookeeper.ZooKeeper: Client environment:user.home=/root
+2023-12-27 02:49:44,643 INFO  [main] zookeeper.ZooKeeper: Client environment:user.dir=/usr/program
+2023-12-27 02:49:44,643 INFO  [main] zookeeper.ZooKeeper: Client environment:os.memory.free=180MB
+2023-12-27 02:49:44,643 INFO  [main] zookeeper.ZooKeeper: Client environment:os.memory.max=3932MB
+2023-12-27 02:49:44,643 INFO  [main] zookeeper.ZooKeeper: Client environment:os.memory.total=239MB
+2023-12-27 02:49:44,645 INFO  [main] zookeeper.ZooKeeper: Initiating client connection, connectString=zoo1:2181,zoo2:2181,zoo3:2181 sessionTimeout=90000 watcher=org.apache.hadoop.hbase.zookeeper.PendingWatcher@e8fadb0
+2023-12-27 02:49:44,654 INFO  [main] common.X509Util: Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation
+2023-12-27 02:49:44,686 INFO  [main] zookeeper.ClientCnxnSocket: jute.maxbuffer value is 4194304 Bytes
+2023-12-27 02:49:44,709 INFO  [main] zookeeper.ClientCnxn: zookeeper.request.timeout value is 0. feature enabled=
+2023-12-27 02:49:44,756 INFO  [main-SendThread(zoo1:2181)] zookeeper.ClientCnxn: Opening socket connection to server zoo1/172.28.1.11:2181. Will not attempt to authenticate using SASL (unknown error)
+2023-12-27 02:49:44,797 INFO  [main-SendThread(zoo1:2181)] zookeeper.ClientCnxn: Socket connection established, initiating session, client: /172.28.1.2:35704, server: zoo1/172.28.1.11:2181
+2023-12-27 02:49:44,845 INFO  [main-SendThread(zoo1:2181)] zookeeper.ClientCnxn: Session establishment complete on server zoo1/172.28.1.11:2181, sessionid = 0x100003870860000, negotiated timeout = 40000
+2023-12-27 02:49:45,301 INFO  [main] util.log: Logging initialized @11387ms
+2023-12-27 02:49:45,622 INFO  [main] http.HttpServer: Added global filter 'safety' (class=org.apache.hadoop.hbase.http.HttpServer$QuotingInputFilter)
+2023-12-27 02:49:45,623 INFO  [main] http.HttpServer: Added global filter 'clickjackingprevention' (class=org.apache.hadoop.hbase.http.ClickjackingPreventionFilter)
+2023-12-27 02:49:45,623 INFO  [main] http.HttpServer: Added global filter 'securityheaders' (class=org.apache.hadoop.hbase.http.SecurityHeadersFilter)
+2023-12-27 02:49:45,625 INFO  [main] http.HttpServer: Added filter static_user_filter (class=org.apache.hadoop.hbase.http.lib.StaticUserWebFilter$StaticUserFilter) to context regionserver
+2023-12-27 02:49:45,625 INFO  [main] http.HttpServer: Added filter static_user_filter (class=org.apache.hadoop.hbase.http.lib.StaticUserWebFilter$StaticUserFilter) to context logs
+2023-12-27 02:49:45,625 INFO  [main] http.HttpServer: Added filter static_user_filter (class=org.apache.hadoop.hbase.http.lib.StaticUserWebFilter$StaticUserFilter) to context static
+2023-12-27 02:49:45,633 INFO  [main] http.HttpServer: ASYNC_PROFILER_HOME environment variable and async.profiler.home system property not specified. Disabling /prof endpoint.
+2023-12-27 02:49:45,709 INFO  [main] http.HttpServer: Jetty bound to port 16030
+2023-12-27 02:49:45,710 INFO  [main] server.Server: jetty-9.3.28.v20191105, build timestamp: 2019-11-05T18:00:51Z, git hash: d7dd68d6e9d8ff06a0130e46886c2db5d70784c1
+2023-12-27 02:49:45,797 INFO  [main] http.SecurityHeadersFilter: Added security headers filter
+2023-12-27 02:49:45,803 INFO  [main] handler.ContextHandler: Started o.e.j.s.ServletContextHandler@2dbd803f{/logs,file:///usr/program/hbase/logs/,AVAILABLE}
+2023-12-27 02:49:45,805 INFO  [main] http.SecurityHeadersFilter: Added security headers filter
+2023-12-27 02:49:45,805 INFO  [main] handler.ContextHandler: Started o.e.j.s.ServletContextHandler@31ddd4a4{/static,file:///usr/program/hbase/hbase-webapps/static/,AVAILABLE}
+2023-12-27 02:49:46,017 INFO  [main] webapp.StandardDescriptorProcessor: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2023-12-27 02:49:46,026 INFO  [main] http.SecurityHeadersFilter: Added security headers filter
+2023-12-27 02:49:46,058 INFO  [main] handler.ContextHandler: Started o.e.j.w.WebAppContext@57b75756{/,file:///usr/program/hbase/hbase-webapps/regionserver/,AVAILABLE}{file:/usr/program/hbase/hbase-webapps/regionserver}
+2023-12-27 02:49:46,071 INFO  [main] server.AbstractConnector: Started ServerConnector@4fde08c8{HTTP/1.1,[http/1.1]}{0.0.0.0:16030}
+2023-12-27 02:49:46,071 INFO  [main] server.Server: Started @12157ms
+2023-12-27 02:50:23,089 INFO  [regionserver/worker1:16020] regionserver.HRegionServer: ClusterId : 0ef716a2-1895-4d6c-a178-e014b644d832
+2023-12-27 02:50:23,268 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x50400b71] zookeeper.ZooKeeper: Initiating client connection, connectString=zoo1:2181,zoo2:2181,zoo3:2181 sessionTimeout=90000 watcher=org.apache.hadoop.hbase.zookeeper.ReadOnlyZKClient$$Lambda$42/2116258275@3f1e83d8
+2023-12-27 02:50:23,269 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x50400b71] zookeeper.ClientCnxnSocket: jute.maxbuffer value is 4194304 Bytes
+2023-12-27 02:50:23,270 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x50400b71] zookeeper.ClientCnxn: zookeeper.request.timeout value is 0. feature enabled=
+2023-12-27 02:50:23,386 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x50400b71-SendThread(zoo3:2181)] zookeeper.ClientCnxn: Opening socket connection to server zoo3/172.28.1.13:2181. Will not attempt to authenticate using SASL (unknown error)
+2023-12-27 02:50:23,387 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x50400b71-SendThread(zoo3:2181)] zookeeper.ClientCnxn: Socket connection established, initiating session, client: /172.28.1.2:54422, server: zoo3/172.28.1.13:2181
+2023-12-27 02:50:23,396 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x50400b71-SendThread(zoo3:2181)] zookeeper.ClientCnxn: Session establishment complete on server zoo3/172.28.1.13:2181, sessionid = 0x300003870c50001, negotiated timeout = 40000
+2023-12-27 02:50:23,491 INFO  [regionserver/worker1:16020] regionserver.RegionServerCoprocessorHost: System coprocessor loading is enabled
+2023-12-27 02:50:23,492 INFO  [regionserver/worker1:16020] regionserver.RegionServerCoprocessorHost: Table coprocessor loading is enabled
+2023-12-27 02:50:23,499 INFO  [regionserver/worker1:16020] regionserver.HRegionServer: reportForDuty to master=master,16000,1703645415736 with port=16020, startcode=1703645377524
+2023-12-27 02:50:23,895 INFO  [regionserver/worker1:16020] wal.WALFactory: Instantiating WALProvider of type class org.apache.hadoop.hbase.wal.AsyncFSWALProvider
+2023-12-27 02:50:24,217 INFO  [regionserver/worker1:16020] regionserver.MetricsRegionServerWrapperImpl: Computing regionserver metrics every 5000 milliseconds
+2023-12-27 02:50:24,299 INFO  [regionserver/worker1:16020] regionserver.MemStoreFlusher: globalMemStoreLimit=1.5 G, globalMemStoreLimitLowMark=1.5 G, Offheap=false
+2023-12-27 02:50:24,305 INFO  [regionserver/worker1:16020] throttle.PressureAwareCompactionThroughputController: Compaction throughput configurations, higher bound: 100.00 MB/second, lower bound 50.00 MB/second, off peak: unlimited, tuning period: 60000 ms
+2023-12-27 02:50:24,306 INFO  [regionserver/worker1:16020] hbase.ChoreService: Chore ScheduledChore name=CompactionThroughputTuner, period=60000, unit=MILLISECONDS is enabled.
+2023-12-27 02:50:24,307 INFO  [regionserver/worker1:16020] regionserver.HRegionServer: CompactionChecker runs every PT10S
+2023-12-27 02:50:24,354 INFO  [regionserver/worker1:16020] hbase.ChoreService: Chore ScheduledChore name=CompactedHFilesCleaner, period=120000, unit=MILLISECONDS is enabled.
+2023-12-27 02:50:24,371 INFO  [regionserver/worker1:16020] hbase.ChoreService: Chore ScheduledChore name=CompactionChecker, period=10000, unit=MILLISECONDS is enabled.
+2023-12-27 02:50:24,371 INFO  [regionserver/worker1:16020] hbase.ChoreService: Chore ScheduledChore name=MemstoreFlusherChore, period=10000, unit=MILLISECONDS is enabled.
+2023-12-27 02:50:24,371 INFO  [regionserver/worker1:16020] hbase.ChoreService: Chore ScheduledChore name=nonceCleaner, period=360000, unit=MILLISECONDS is enabled.
+2023-12-27 02:50:24,404 INFO  [SplitLogWorker-worker1:16020] regionserver.SplitLogWorker: SplitLogWorker worker1,16020,1703645377524 starting
+2023-12-27 02:50:24,409 INFO  [regionserver/worker1:16020] regionserver.HeapMemoryManager: Starting, tuneOn=false
+2023-12-27 02:50:24,412 INFO  [regionserver/worker1:16020] hbase.ChoreService: Chore ScheduledChore name=worker1,16020,1703645377524-HeapMemoryTunerChore, period=60000, unit=MILLISECONDS is enabled.
+2023-12-27 02:50:24,414 INFO  [regionserver/worker1:16020] regionserver.ChunkCreator: Allocating data MemStoreChunkPool with chunk size 2 MB, max count 707, initial count 0
+2023-12-27 02:50:24,416 INFO  [regionserver/worker1:16020] regionserver.ChunkCreator: Allocating index MemStoreChunkPool with chunk size 204.80 KB, max count 786, initial count 0
+2023-12-27 02:50:24,437 INFO  [regionserver/worker1:16020] regionserver.Replication: worker1,16020,1703645377524 started
+2023-12-27 02:50:24,437 INFO  [regionserver/worker1:16020] regionserver.HRegionServer: Serving as worker1,16020,1703645377524, RpcServer on worker1/172.28.1.2:16020, sessionid=0x100003870860000
+2023-12-27 02:50:24,446 INFO  [regionserver/worker1:16020] quotas.RegionServerRpcQuotaManager: Quota support disabled
+2023-12-27 02:50:24,446 INFO  [regionserver/worker1:16020] quotas.RegionServerSpaceQuotaManager: Quota support disabled, not starting space quota manager.
+2023-12-27 02:50:27,505 INFO  [regionserver/worker1:16020] wal.AbstractFSWAL: WAL configuration: blocksize=256 MB, rollsize=128 MB, prefix=worker1%2C16020%2C1703645377524, suffix=, logDir=hdfs://master:9000/hbase/WALs/worker1,16020,1703645377524, archiveDir=hdfs://master:9000/hbase/oldWALs, maxLogs=32
+2023-12-27 02:50:27,619 INFO  [regionserver/worker1:16020] wal.AbstractFSWAL: New WAL /hbase/WALs/worker1,16020,1703645377524/worker1%2C16020%2C1703645377524.1703645427515
+2023-12-27 02:51:23,526 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x50400b71] zookeeper.ZooKeeper: Session: 0x300003870c50001 closed
+2023-12-27 02:51:23,526 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x50400b71-EventThread] zookeeper.ClientCnxn: EventThread shut down for session: 0x300003870c50001
+Wed Dec 27 10:52:36 CST 2023 Starting regionserver on worker1
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 62919
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1048576
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) unlimited
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+2023-12-27 02:52:38,132 INFO  [main] regionserver.HRegionServer: STARTING executorService HRegionServer
+2023-12-27 02:52:38,134 INFO  [main] util.VersionInfo: HBase 2.3.6
+2023-12-27 02:52:38,134 INFO  [main] util.VersionInfo: Source code repository git://7257be94c61e/home/stack/hbase-rm/output/hbase revision=7414579f2620fca6b75146c29ab2726fc4643ac9
+2023-12-27 02:52:38,134 INFO  [main] util.VersionInfo: Compiled by stack on Wed Jul 28 22:24:42 UTC 2021
+2023-12-27 02:52:38,169 INFO  [main] util.VersionInfo: From source with checksum eb11554aeb325ccaf65a9b469efe7ddcdc0bb0eec35a53f77d0c5c09eac5722007a05ef62349c7afb8005ed1abe32e772f99bb2137194641f5ce51d525aa5634
+2023-12-27 02:52:39,159 INFO  [main] util.ServerCommandLine: hbase.tmp.dir: /tmp/hbase-root
+2023-12-27 02:52:39,160 INFO  [main] util.ServerCommandLine: hbase.rootdir: hdfs://master:9000/hbase
+2023-12-27 02:52:39,160 INFO  [main] util.ServerCommandLine: hbase.cluster.distributed: true
+2023-12-27 02:52:39,160 INFO  [main] util.ServerCommandLine: hbase.zookeeper.quorum: zoo1,zoo2,zoo3
+2023-12-27 02:52:39,161 INFO  [main] util.ServerCommandLine: env:PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/jvm/java-1.8-openjdk/bin:/usr/program/hadoop/bin:/usr/program/hadoop/sbin:/usr/program/hive/bin:/usr/program/hbase/bin:/usr/program/spark/bin
+2023-12-27 02:52:39,165 INFO  [main] util.ServerCommandLine: env:HADOOP_CONF_DIR=/usr/program/hadoop/etc/hadoop
+2023-12-27 02:52:39,166 INFO  [main] util.ServerCommandLine: env:ZK_VERSION=3.6.3
+2023-12-27 02:52:39,166 INFO  [main] util.ServerCommandLine: env:ZK_PACKAGE=apache-zookeeper-3.6.3-bin.tar.gz
+2023-12-27 02:52:39,166 INFO  [main] util.ServerCommandLine: env:ROOT_PWD=123456
+2023-12-27 02:52:39,166 INFO  [main] util.ServerCommandLine: env:USR_PROGRAM_DIR=/usr/program
+2023-12-27 02:52:39,166 INFO  [main] util.ServerCommandLine: env:HBASE_CONF_DIR=/usr/program/hbase/conf/
+2023-12-27 02:52:39,166 INFO  [main] util.ServerCommandLine: env:HADOOP_NNAMENADE_HOSTNAME=master
+2023-12-27 02:52:39,166 INFO  [main] util.ServerCommandLine: env:YARN_NODEMANAGER_USER=root
+2023-12-27 02:52:39,169 INFO  [main] util.ServerCommandLine: env:LD_LIBRARY_PATH=/usr/lib/jvm/java-1.8-openjdk/jre/lib/amd64/server:/usr/lib/jvm/java-1.8-openjdk/jre/lib/amd64:/usr/lib/jvm/java-1.8-openjdk/jre/../lib/amd64:/usr/program/hadoop/lib/native:
+2023-12-27 02:52:39,169 INFO  [main] util.ServerCommandLine: env:JVM_PID=233
+2023-12-27 02:52:39,170 INFO  [main] util.ServerCommandLine: env:HBASE_REST_OPTS=
+2023-12-27 02:52:39,170 INFO  [main] util.ServerCommandLine: env:HIVE_LOG_DIR=/usr/program/hive/logs
+2023-12-27 02:52:39,170 INFO  [main] util.ServerCommandLine: env:PWD=/usr/program
+2023-12-27 02:52:39,170 INFO  [main] util.ServerCommandLine: env:SPARK_MASTER_ADDRESS=spark://master:7077
+2023-12-27 02:52:39,172 INFO  [main] util.ServerCommandLine: env:ZOO_SERVERS_HOSTNAME=zoo1 zoo2 zoo3
+2023-12-27 02:52:39,177 INFO  [main] util.ServerCommandLine: env:HBASE_ROOT_LOGGER=INFO,RFA
+2023-12-27 02:52:39,177 INFO  [main] util.ServerCommandLine: env:PIP_DISABLE_PIP_VERSION_CHECK=1
+2023-12-27 02:52:39,177 INFO  [main] util.ServerCommandLine: env:HBASE_ENV_INIT=true
+2023-12-27 02:52:39,177 INFO  [main] util.ServerCommandLine: env:HIVE_HOME=/usr/program/hive
+2023-12-27 02:52:39,177 INFO  [main] util.ServerCommandLine: env:HBASE_MANAGES_ZK=false
+2023-12-27 02:52:39,177 INFO  [main] util.ServerCommandLine: env:SPARK_CONF_DIR=/usr/program/spark/conf
+2023-12-27 02:52:39,178 INFO  [main] util.ServerCommandLine: env:SED=sed
+2023-12-27 02:52:39,178 INFO  [main] util.ServerCommandLine: env:HADOOP_SERVERS_HOSTNAME=master worker1 worker2
+2023-12-27 02:52:39,178 INFO  [main] util.ServerCommandLine: env:HADOOP_HOME=/usr/program/hadoop
+2023-12-27 02:52:39,178 INFO  [main] util.ServerCommandLine: env:HBASE_NICENESS=0
+2023-12-27 02:52:39,178 INFO  [main] util.ServerCommandLine: env:HBASE_PACKAGE=hbase-2.3.6-bin.tar.gz
+2023-12-27 02:52:39,178 INFO  [main] util.ServerCommandLine: env:HADOOP_PACKAGE=hadoop-3.2.3.tar.gz
+2023-12-27 02:52:39,178 INFO  [main] util.ServerCommandLine: env:HBASE_SECURITY_LOGGER=INFO,RFAS
+2023-12-27 02:52:39,179 INFO  [main] util.ServerCommandLine: env:HBASE_OPTS=-XX:+UseConcMarkSweepGC -Djava.util.logging.config.class=org.apache.hadoop.hbase.logging.JulToSlf4jInitializer   -Dhbase.log.dir=/usr/program/hbase/logs -Dhbase.log.file=hbase--regionserver-worker1.log -Dhbase.home.dir=/usr/program/hbase -Dhbase.id.str= -Dhbase.root.logger=INFO,RFA -Dhbase.security.logger=INFO,RFAS
+2023-12-27 02:52:39,179 INFO  [main] util.ServerCommandLine: env:HDFS_DATANODE_USER=root
+2023-12-27 02:52:39,179 INFO  [main] util.ServerCommandLine: env:SHLVL=1
+2023-12-27 02:52:39,179 INFO  [main] util.ServerCommandLine: env:SPARK_LOG_DIR=/usr/program/spark/logs
+2023-12-27 02:52:39,179 INFO  [main] util.ServerCommandLine: env:HBASE_LOGFILE=hbase--regionserver-worker1.log
+2023-12-27 02:52:39,179 INFO  [main] util.ServerCommandLine: env:HBASE_REGIONSERVER_HOSTNAME=worker1 worker2
+2023-12-27 02:52:39,179 INFO  [main] util.ServerCommandLine: env:SPARK_VERSION=3.0.0
+2023-12-27 02:52:39,179 INFO  [main] util.ServerCommandLine: env:SPARK_PACKAGE=spark-3.0.0-bin-hadoop3.2.tgz
+2023-12-27 02:52:39,179 INFO  [main] util.ServerCommandLine: env:JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+2023-12-27 02:52:39,180 INFO  [main] util.ServerCommandLine: env:SPARK_LOCAL_HOSTNAME=worker1
+2023-12-27 02:52:39,180 INFO  [main] util.ServerCommandLine: env:ZK_CONF_DIR=/usr/program/zookeeper/conf
+2023-12-27 02:52:39,180 INFO  [main] util.ServerCommandLine: env:HADOOP_NODE=datanode
+2023-12-27 02:52:39,180 INFO  [main] util.ServerCommandLine: env:SPARK_LOCAL_IP=172.28.1.2
+2023-12-27 02:52:39,180 INFO  [main] util.ServerCommandLine: env:YARN_RESOURCEMANAGER_USER=root
+2023-12-27 02:52:39,181 INFO  [main] util.ServerCommandLine: env:HADOOP_CLASSPATH=/usr/program/hadoop/share/hadoop/tools/lib/*:/usr/program/hive/lib/*
+2023-12-27 02:52:39,181 INFO  [main] util.ServerCommandLine: env:SPARK_HOME=/usr/program/spark
+2023-12-27 02:52:39,181 INFO  [main] util.ServerCommandLine: env:USR_BIN_DIR=/usr/program/source_dir
+2023-12-27 02:52:39,181 INFO  [main] util.ServerCommandLine: env:HADOOP_VERSION=3.2.3
+2023-12-27 02:52:39,182 INFO  [main] util.ServerCommandLine: env:HBASE_VERSION=2.3.6
+2023-12-27 02:52:39,182 INFO  [main] util.ServerCommandLine: env:HADOOP_MAPRED_HOME=/usr/program/hadoop
+2023-12-27 02:52:39,182 INFO  [main] util.ServerCommandLine: env:HADOOP_DATANODE_UI_PORT=9864
+2023-12-27 02:52:39,182 INFO  [main] util.ServerCommandLine: env:HIVE_PACKAGE=apache-hive-3.1.2-bin.tar.gz
+2023-12-27 02:52:39,185 INFO  [main] util.ServerCommandLine: env:HADOOP_COMMON_HOME=/usr/program/hadoop
+2023-12-27 02:52:39,186 INFO  [main] util.ServerCommandLine: env:PYTHONHASHSEED=0
+2023-12-27 02:52:39,186 INFO  [main] util.ServerCommandLine: env:HBASE_ROLE=regionserver
+2023-12-27 02:52:39,186 INFO  [main] util.ServerCommandLine: env:HIVE_CONF_DIR=/usr/program/hive/conf
+2023-12-27 02:52:39,186 INFO  [main] util.ServerCommandLine: env:HBASE_DISABLE_HADOOP_CLASSPATH_LOOKUP=true
+2023-12-27 02:52:39,186 INFO  [main] util.ServerCommandLine: env:ZK_HOME=/usr/program/zookeeper
+2023-12-27 02:52:39,190 INFO  [main] util.ServerCommandLine: env:PYTHONIOENCODING=UTF-8
+2023-12-27 02:52:39,191 INFO  [main] util.ServerCommandLine: env:HBASE_IDENT_STRING=
+2023-12-27 02:52:39,191 INFO  [main] util.ServerCommandLine: env:SPARK_DIST_CLASSPATH=/usr/program/hadoop/etc/hadoop:/usr/program/hadoop/share/hadoop/tools/lib/*:/usr/program/hadoop/share/hadoop/common/lib/*:/usr/program/hadoop/share/hadoop/common/*:/usr/program/hadoop/share/hadoop/hdfs:/usr/program/hadoop/share/hadoop/hdfs/lib/*:/usr/program/hadoop/share/hadoop/hdfs/*:/usr/program/hadoop/share/hadoop/mapreduce/lib/*:/usr/program/hadoop/share/hadoop/mapreduce/*:/usr/program/hadoop/share/hadoop/yarn:/usr/program/hadoop/share/hadoop/yarn/lib/*:/usr/program/hadoop/share/hadoop/yarn/*
+2023-12-27 02:52:39,191 INFO  [main] util.ServerCommandLine: env:HBASE_ZNODE_FILE=/tmp/hbase--regionserver.znode
+2023-12-27 02:52:39,191 INFO  [main] util.ServerCommandLine: env:HBASE_MASTER_HOSTNAME=master
+2023-12-27 02:52:39,191 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_PREFIX=hbase--regionserver-worker1
+2023-12-27 02:52:39,191 INFO  [main] util.ServerCommandLine: env:HBASE_LOG_DIR=/usr/program/hbase/logs
+2023-12-27 02:52:39,192 INFO  [main] util.ServerCommandLine: ttp-2.7.5.jar:/usr/program/hbase/lib/okio-1.6.0.jar:/usr/program/hbase/lib/osgi-resource-locator-1.0.1.jar:/usr/program/hbase/lib/paranamer-2.3.jar:/usr/program/hbase/lib/protobuf-java-2.5.0.jar:/usr/program/hbase/lib/snappy-java-1.0.5.jar:/usr/program/hbase/lib/spymemcached-2.12.2.jar:/usr/program/hbase/lib/stax2-api-3.1.4.jar:/usr/program/hbase/lib/validation-api-1.1.0.Final.jar:/usr/program/hbase/lib/woodstox-core-5.0.3.jar:/usr/program/hbase/lib/xmlenc-0.52.jar:/usr/program/hbase/lib/zookeeper-3.5.7.jar:/usr/program/hbase/lib/zookeeper-jute-3.5.7.jar:/usr/program/hbase/lib/client-facing-thirdparty/audience-annotations-0.5.0.jar:/usr/program/hbase/lib/client-facing-thirdparty/commons-logging-1.2.jar:/usr/program/hbase/lib/client-facing-thirdparty/htrace-core4-4.2.0-incubating.jar:/usr/program/hbase/lib/client-facing-thirdparty/log4j-1.2.17.jar:/usr/program/hbase/lib/client-facing-thirdparty/slf4j-api-1.7.30.jar:/usr/program/hbase/lib/client-facing-thirdparty/slf4j-log4j12-1.7.30.jar
+2023-12-27 02:52:39,221 INFO  [main] util.ServerCommandLine: env:HDFS_NAMENODE_USER=root
+2023-12-27 02:52:39,222 INFO  [main] util.ServerCommandLine: env:SPARK_MASTER_HOST=172.28.1.1
+2023-12-27 02:52:39,222 INFO  [main] util.ServerCommandLine: env:HIVE_VERSION=3.1.2
+2023-12-27 02:52:39,222 INFO  [main] util.ServerCommandLine: env:HBASE_AUTOSTART_FILE=/tmp/hbase--regionserver.autostart
+2023-12-27 02:52:39,222 INFO  [main] util.ServerCommandLine: env:HOSTNAME=worker1
+2023-12-27 02:52:39,222 INFO  [main] util.ServerCommandLine: env:GREP=grep
+2023-12-27 02:52:39,222 INFO  [main] util.ServerCommandLine: env:SPARK_HADOOP_VERSION=3.2
+2023-12-27 02:52:39,222 INFO  [main] util.ServerCommandLine: env:HADOOP_LOG_DIR=/usr/program/hadoop/logs
+2023-12-27 02:52:39,222 INFO  [main] util.ServerCommandLine: env:SPARK_PUBLIC_DNS=localhost
+2023-12-27 02:52:39,224 INFO  [main] util.ServerCommandLine: env:SPARK_WORKER_PORT=8881
+2023-12-27 02:52:39,224 INFO  [main] util.ServerCommandLine: env:HBASE_HOME=/usr/program/hbase
+2023-12-27 02:52:39,225 INFO  [main] util.ServerCommandLine: env:HBASE_THRIFT_OPTS=
+2023-12-27 02:52:39,225 INFO  [main] util.ServerCommandLine: env:HDFS_SECONDARYNAMENODE_USER=root
+2023-12-27 02:52:39,225 INFO  [main] util.ServerCommandLine: env:HOME=/root
+2023-12-27 02:52:39,225 INFO  [main] util.ServerCommandLine: env:SPARK_WORKER_WEBUI_PORT=8981
+2023-12-27 02:52:39,225 INFO  [main] util.ServerCommandLine: env:MALLOC_ARENA_MAX=4
+2023-12-27 02:52:39,227 INFO  [main] util.ServerCommandLine: vmName=OpenJDK 64-Bit Server VM, vmVendor=IcedTea, vmVersion=25.275-b01
+2023-12-27 02:52:39,227 INFO  [main] util.ServerCommandLine: vmInputArguments=[-Dproc_regionserver, -XX:OnOutOfMemoryError=kill -9 %p, -XX:+UseConcMarkSweepGC, -Djava.util.logging.config.class=org.apache.hadoop.hbase.logging.JulToSlf4jInitializer, -Dhbase.log.dir=/usr/program/hbase/logs, -Dhbase.log.file=hbase--regionserver-worker1.log, -Dhbase.home.dir=/usr/program/hbase, -Dhbase.id.str=, -Dhbase.root.logger=INFO,RFA, -Dhbase.security.logger=INFO,RFAS]
+2023-12-27 02:52:40,903 INFO  [main] metrics.MetricRegistries: Loaded MetricRegistries class org.apache.hadoop.hbase.metrics.impl.MetricRegistriesImpl
+2023-12-27 02:52:41,167 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2023-12-27 02:52:41,888 INFO  [main] regionserver.RSRpcServices: regionserver/worker1:16020 server-side Connection retries=45
+2023-12-27 02:52:41,941 INFO  [main] ipc.RpcExecutor: Instantiated default.FPBQ.Fifo with queueClass=class java.util.concurrent.LinkedBlockingQueue; numCallQueues=3, maxQueueLength=300, handlerCount=30
+2023-12-27 02:52:41,946 INFO  [main] ipc.RpcExecutor: Instantiated priority.RWQ.Fifo with queueClass=class java.util.concurrent.LinkedBlockingQueue; numCallQueues=2, maxQueueLength=300, handlerCount=20
+2023-12-27 02:52:41,946 INFO  [main] ipc.RWQueueRpcExecutor: priority.RWQ.Fifo writeQueues=1 writeHandlers=2 readQueues=1 readHandlers=18 scanQueues=0 scanHandlers=0
+2023-12-27 02:52:41,946 INFO  [main] ipc.RpcExecutor: Instantiated replication.FPBQ.Fifo with queueClass=class java.util.concurrent.LinkedBlockingQueue; numCallQueues=1, maxQueueLength=300, handlerCount=3
+2023-12-27 02:52:41,947 INFO  [main] ipc.RpcExecutor: Instantiated metaPriority.FPBQ.Fifo with queueClass=class java.util.concurrent.LinkedBlockingQueue; numCallQueues=1, maxQueueLength=300, handlerCount=1
+2023-12-27 02:52:42,338 INFO  [main] ipc.RpcServerFactory: Creating org.apache.hadoop.hbase.ipc.NettyRpcServer hosting hbase.pb.ClientService, hbase.pb.AdminService
+2023-12-27 02:52:42,568 INFO  [main] Configuration.deprecation: hbase.ipc.server.reservoir.initial.buffer.size is deprecated. Instead, use hbase.server.allocator.buffer.size
+2023-12-27 02:52:42,568 INFO  [main] Configuration.deprecation: hbase.ipc.server.reservoir.initial.max is deprecated. Instead, use hbase.server.allocator.max.buffer.count
+2023-12-27 02:52:42,943 INFO  [main] ipc.NettyRpcServer: Bind to /172.28.1.2:16020
+2023-12-27 02:52:43,305 INFO  [main] Configuration.deprecation: hbase.offheapcache.minblocksize is deprecated. Instead, use hbase.blockcache.minblocksize
+2023-12-27 02:52:43,316 INFO  [main] hfile.BlockCacheFactory: Allocating BlockCache size=1.54 GB, blockSize=64 KB
+2023-12-27 02:52:46,728 INFO  [main] fs.HFileSystem: Added intercepting call to namenode#getBlockLocations so can do block reordering using class org.apache.hadoop.hbase.fs.HFileSystem$ReorderWALBlocks
+2023-12-27 02:52:46,792 INFO  [main] fs.HFileSystem: Added intercepting call to namenode#getBlockLocations so can do block reordering using class org.apache.hadoop.hbase.fs.HFileSystem$ReorderWALBlocks
+2023-12-27 02:52:46,901 INFO  [main] zookeeper.RecoverableZooKeeper: Process identifier=regionserver:16020 connecting to ZooKeeper ensemble=zoo1:2181,zoo2:2181,zoo3:2181
+2023-12-27 02:52:46,913 INFO  [main] zookeeper.ZooKeeper: Client environment:zookeeper.version=3.5.7-f0fdd52973d373ffd9c86b81d99842dc2c7f660e, built on 02/10/2020 11:30 GMT
+2023-12-27 02:52:46,945 INFO  [main] zookeeper.ZooKeeper: Client environment:host.name=worker1
+2023-12-27 02:52:46,945 INFO  [main] zookeeper.ZooKeeper: Client environment:java.version=1.8.0_275
+2023-12-27 02:52:46,945 INFO  [main] zookeeper.ZooKeeper: Client environment:java.vendor=IcedTea
+2023-12-27 02:52:46,945 INFO  [main] zookeeper.ZooKeeper: Client environment:java.home=/usr/lib/jvm/java-1.8-openjdk/jre
+2023-12-27 02:52:46,946 INFO  [main] zookeeper.ZooKeeper: ttp-2.7.5.jar:/usr/program/hbase/lib/okio-1.6.0.jar:/usr/program/hbase/lib/osgi-resource-locator-1.0.1.jar:/usr/program/hbase/lib/paranamer-2.3.jar:/usr/program/hbase/lib/protobuf-java-2.5.0.jar:/usr/program/hbase/lib/snappy-java-1.0.5.jar:/usr/program/hbase/lib/spymemcached-2.12.2.jar:/usr/program/hbase/lib/stax2-api-3.1.4.jar:/usr/program/hbase/lib/validation-api-1.1.0.Final.jar:/usr/program/hbase/lib/woodstox-core-5.0.3.jar:/usr/program/hbase/lib/xmlenc-0.52.jar:/usr/program/hbase/lib/zookeeper-3.5.7.jar:/usr/program/hbase/lib/zookeeper-jute-3.5.7.jar:/usr/program/hbase/lib/client-facing-thirdparty/audience-annotations-0.5.0.jar:/usr/program/hbase/lib/client-facing-thirdparty/commons-logging-1.2.jar:/usr/program/hbase/lib/client-facing-thirdparty/htrace-core4-4.2.0-incubating.jar:/usr/program/hbase/lib/client-facing-thirdparty/log4j-1.2.17.jar:/usr/program/hbase/lib/client-facing-thirdparty/slf4j-api-1.7.30.jar:/usr/program/hbase/lib/client-facing-thirdparty/slf4j-log4j12-1.7.30.jar
+2023-12-27 02:52:46,946 INFO  [main] zookeeper.ZooKeeper: Client environment:java.library.path=/usr/lib/jvm/java-1.8-openjdk/jre/lib/amd64/server:/usr/lib/jvm/java-1.8-openjdk/jre/lib/amd64:/usr/lib/jvm/java-1.8-openjdk/jre/../lib/amd64:/usr/program/hadoop/lib/native::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+2023-12-27 02:52:46,946 INFO  [main] zookeeper.ZooKeeper: Client environment:java.io.tmpdir=/tmp
+2023-12-27 02:52:46,946 INFO  [main] zookeeper.ZooKeeper: Client environment:java.compiler=<NA>
+2023-12-27 02:52:46,946 INFO  [main] zookeeper.ZooKeeper: Client environment:os.name=Linux
+2023-12-27 02:52:46,946 INFO  [main] zookeeper.ZooKeeper: Client environment:os.arch=amd64
+2023-12-27 02:52:46,946 INFO  [main] zookeeper.ZooKeeper: Client environment:os.version=5.15.0-91-generic
+2023-12-27 02:52:46,946 INFO  [main] zookeeper.ZooKeeper: Client environment:user.name=root
+2023-12-27 02:52:46,946 INFO  [main] zookeeper.ZooKeeper: Client environment:user.home=/root
+2023-12-27 02:52:46,946 INFO  [main] zookeeper.ZooKeeper: Client environment:user.dir=/usr/program
+2023-12-27 02:52:46,946 INFO  [main] zookeeper.ZooKeeper: Client environment:os.memory.free=181MB
+2023-12-27 02:52:46,947 INFO  [main] zookeeper.ZooKeeper: Client environment:os.memory.max=3932MB
+2023-12-27 02:52:46,947 INFO  [main] zookeeper.ZooKeeper: Client environment:os.memory.total=239MB
+2023-12-27 02:52:46,949 INFO  [main] zookeeper.ZooKeeper: Initiating client connection, connectString=zoo1:2181,zoo2:2181,zoo3:2181 sessionTimeout=90000 watcher=org.apache.hadoop.hbase.zookeeper.PendingWatcher@e8fadb0
+2023-12-27 02:52:46,963 INFO  [main] common.X509Util: Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation
+2023-12-27 02:52:46,983 INFO  [main] zookeeper.ClientCnxnSocket: jute.maxbuffer value is 4194304 Bytes
+2023-12-27 02:52:47,017 INFO  [main] zookeeper.ClientCnxn: zookeeper.request.timeout value is 0. feature enabled=
+2023-12-27 02:52:47,056 INFO  [main-SendThread(zoo1:2181)] zookeeper.ClientCnxn: Opening socket connection to server zoo1/172.28.1.11:2181. Will not attempt to authenticate using SASL (unknown error)
+2023-12-27 02:52:47,075 INFO  [main-SendThread(zoo1:2181)] zookeeper.ClientCnxn: Socket connection established, initiating session, client: /172.28.1.2:57064, server: zoo1/172.28.1.11:2181
+2023-12-27 02:52:47,133 INFO  [main-SendThread(zoo1:2181)] zookeeper.ClientCnxn: Session establishment complete on server zoo1/172.28.1.11:2181, sessionid = 0x100003b39850000, negotiated timeout = 40000
+2023-12-27 02:52:47,367 INFO  [main] util.log: Logging initialized @10655ms
+2023-12-27 02:52:47,744 INFO  [main] http.HttpServer: Added global filter 'safety' (class=org.apache.hadoop.hbase.http.HttpServer$QuotingInputFilter)
+2023-12-27 02:52:47,747 INFO  [main] http.HttpServer: Added global filter 'clickjackingprevention' (class=org.apache.hadoop.hbase.http.ClickjackingPreventionFilter)
+2023-12-27 02:52:47,748 INFO  [main] http.HttpServer: Added global filter 'securityheaders' (class=org.apache.hadoop.hbase.http.SecurityHeadersFilter)
+2023-12-27 02:52:47,769 INFO  [main] http.HttpServer: Added filter static_user_filter (class=org.apache.hadoop.hbase.http.lib.StaticUserWebFilter$StaticUserFilter) to context regionserver
+2023-12-27 02:52:47,769 INFO  [main] http.HttpServer: Added filter static_user_filter (class=org.apache.hadoop.hbase.http.lib.StaticUserWebFilter$StaticUserFilter) to context logs
+2023-12-27 02:52:47,781 INFO  [main] http.HttpServer: Added filter static_user_filter (class=org.apache.hadoop.hbase.http.lib.StaticUserWebFilter$StaticUserFilter) to context static
+2023-12-27 02:52:47,787 INFO  [main] http.HttpServer: ASYNC_PROFILER_HOME environment variable and async.profiler.home system property not specified. Disabling /prof endpoint.
+2023-12-27 02:52:48,003 INFO  [main] http.HttpServer: Jetty bound to port 16030
+2023-12-27 02:52:48,005 INFO  [main] server.Server: jetty-9.3.28.v20191105, build timestamp: 2019-11-05T18:00:51Z, git hash: d7dd68d6e9d8ff06a0130e46886c2db5d70784c1
+2023-12-27 02:52:48,077 INFO  [main] http.SecurityHeadersFilter: Added security headers filter
+2023-12-27 02:52:48,094 INFO  [main] handler.ContextHandler: Started o.e.j.s.ServletContextHandler@2dbd803f{/logs,file:///usr/program/hbase/logs/,AVAILABLE}
+2023-12-27 02:52:48,101 INFO  [main] http.SecurityHeadersFilter: Added security headers filter
+2023-12-27 02:52:48,101 INFO  [main] handler.ContextHandler: Started o.e.j.s.ServletContextHandler@31ddd4a4{/static,file:///usr/program/hbase/hbase-webapps/static/,AVAILABLE}
+2023-12-27 02:52:48,266 INFO  [main] webapp.StandardDescriptorProcessor: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2023-12-27 02:52:48,275 INFO  [main] http.SecurityHeadersFilter: Added security headers filter
+2023-12-27 02:52:48,289 INFO  [main] handler.ContextHandler: Started o.e.j.w.WebAppContext@57b75756{/,file:///usr/program/hbase/hbase-webapps/regionserver/,AVAILABLE}{file:/usr/program/hbase/hbase-webapps/regionserver}
+2023-12-27 02:52:48,308 INFO  [main] server.AbstractConnector: Started ServerConnector@6fc3e1a4{HTTP/1.1,[http/1.1]}{0.0.0.0:16030}
+2023-12-27 02:52:48,308 INFO  [main] server.Server: Started @11596ms
+2023-12-27 02:53:23,765 INFO  [regionserver/worker1:16020] regionserver.HRegionServer: ClusterId : 33c7df02-91f3-46e6-9198-290bb6646963
+2023-12-27 02:53:23,895 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x701f6152] zookeeper.ZooKeeper: Initiating client connection, connectString=zoo1:2181,zoo2:2181,zoo3:2181 sessionTimeout=90000 watcher=org.apache.hadoop.hbase.zookeeper.ReadOnlyZKClient$$Lambda$40/638694132@672cb8cf
+2023-12-27 02:53:23,897 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x701f6152] zookeeper.ClientCnxnSocket: jute.maxbuffer value is 4194304 Bytes
+2023-12-27 02:53:23,899 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x701f6152] zookeeper.ClientCnxn: zookeeper.request.timeout value is 0. feature enabled=
+2023-12-27 02:53:23,919 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x701f6152-SendThread(zoo2:2181)] zookeeper.ClientCnxn: Opening socket connection to server zoo2/172.28.1.12:2181. Will not attempt to authenticate using SASL (unknown error)
+2023-12-27 02:53:23,919 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x701f6152-SendThread(zoo2:2181)] zookeeper.ClientCnxn: Socket connection established, initiating session, client: /172.28.1.2:59430, server: zoo2/172.28.1.12:2181
+2023-12-27 02:53:23,924 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x701f6152-SendThread(zoo2:2181)] zookeeper.ClientCnxn: Session establishment complete on server zoo2/172.28.1.12:2181, sessionid = 0x200003b39730002, negotiated timeout = 40000
+2023-12-27 02:53:24,010 INFO  [regionserver/worker1:16020] regionserver.RegionServerCoprocessorHost: System coprocessor loading is enabled
+2023-12-27 02:53:24,010 INFO  [regionserver/worker1:16020] regionserver.RegionServerCoprocessorHost: Table coprocessor loading is enabled
+2023-12-27 02:53:24,016 INFO  [regionserver/worker1:16020] regionserver.HRegionServer: reportForDuty to master=master,16000,1703645596133 with port=16020, startcode=1703645559480
+2023-12-27 02:53:24,327 INFO  [regionserver/worker1:16020] wal.WALFactory: Instantiating WALProvider of type class org.apache.hadoop.hbase.wal.AsyncFSWALProvider
+2023-12-27 02:53:24,469 INFO  [regionserver/worker1:16020] regionserver.MetricsRegionServerWrapperImpl: Computing regionserver metrics every 5000 milliseconds
+2023-12-27 02:53:24,490 INFO  [regionserver/worker1:16020] regionserver.MemStoreFlusher: globalMemStoreLimit=1.5 G, globalMemStoreLimitLowMark=1.5 G, Offheap=false
+2023-12-27 02:53:24,495 INFO  [regionserver/worker1:16020] throttle.PressureAwareCompactionThroughputController: Compaction throughput configurations, higher bound: 100.00 MB/second, lower bound 50.00 MB/second, off peak: unlimited, tuning period: 60000 ms
+2023-12-27 02:53:24,496 INFO  [regionserver/worker1:16020] hbase.ChoreService: Chore ScheduledChore name=CompactionThroughputTuner, period=60000, unit=MILLISECONDS is enabled.
+2023-12-27 02:53:24,497 INFO  [regionserver/worker1:16020] regionserver.HRegionServer: CompactionChecker runs every PT10S
+2023-12-27 02:53:24,531 INFO  [regionserver/worker1:16020] hbase.ChoreService: Chore ScheduledChore name=CompactedHFilesCleaner, period=120000, unit=MILLISECONDS is enabled.
+2023-12-27 02:53:24,535 INFO  [regionserver/worker1:16020] hbase.ChoreService: Chore ScheduledChore name=CompactionChecker, period=10000, unit=MILLISECONDS is enabled.
+2023-12-27 02:53:24,535 INFO  [regionserver/worker1:16020] hbase.ChoreService: Chore ScheduledChore name=MemstoreFlusherChore, period=10000, unit=MILLISECONDS is enabled.
+2023-12-27 02:53:24,535 INFO  [regionserver/worker1:16020] hbase.ChoreService: Chore ScheduledChore name=nonceCleaner, period=360000, unit=MILLISECONDS is enabled.
+2023-12-27 02:53:24,553 INFO  [regionserver/worker1:16020] regionserver.HeapMemoryManager: Starting, tuneOn=false
+2023-12-27 02:53:24,554 INFO  [SplitLogWorker-worker1:16020] regionserver.SplitLogWorker: SplitLogWorker worker1,16020,1703645559480 starting
+2023-12-27 02:53:24,556 INFO  [regionserver/worker1:16020] hbase.ChoreService: Chore ScheduledChore name=worker1,16020,1703645559480-HeapMemoryTunerChore, period=60000, unit=MILLISECONDS is enabled.
+2023-12-27 02:53:24,559 INFO  [regionserver/worker1:16020] regionserver.ChunkCreator: Allocating data MemStoreChunkPool with chunk size 2 MB, max count 707, initial count 0
+2023-12-27 02:53:24,560 INFO  [regionserver/worker1:16020] regionserver.ChunkCreator: Allocating index MemStoreChunkPool with chunk size 204.80 KB, max count 786, initial count 0
+2023-12-27 02:53:24,575 INFO  [regionserver/worker1:16020] regionserver.Replication: worker1,16020,1703645559480 started
+2023-12-27 02:53:24,575 INFO  [regionserver/worker1:16020] regionserver.HRegionServer: Serving as worker1,16020,1703645559480, RpcServer on worker1/172.28.1.2:16020, sessionid=0x100003b39850000
+2023-12-27 02:53:24,579 INFO  [regionserver/worker1:16020] quotas.RegionServerRpcQuotaManager: Quota support disabled
+2023-12-27 02:53:24,579 INFO  [regionserver/worker1:16020] quotas.RegionServerSpaceQuotaManager: Quota support disabled, not starting space quota manager.
+2023-12-27 02:53:24,884 INFO  [RS_CLOSE_META-regionserver/worker1:16020-0] handler.AssignRegionHandler: Open hbase:meta,,1.1588230740
+2023-12-27 02:53:24,884 INFO  [RS_CLOSE_META-regionserver/worker1:16020-0] wal.WALFactory: Instantiating WALProvider of type class org.apache.hadoop.hbase.wal.AsyncFSWALProvider
+2023-12-27 02:53:24,903 INFO  [RS_CLOSE_META-regionserver/worker1:16020-0] wal.AbstractFSWAL: WAL configuration: blocksize=256 MB, rollsize=128 MB, prefix=worker1%2C16020%2C1703645559480.meta, suffix=.meta, logDir=hdfs://master:9000/hbase/WALs/worker1,16020,1703645559480, archiveDir=hdfs://master:9000/hbase/oldWALs, maxLogs=32
+2023-12-27 02:53:24,966 INFO  [RS_CLOSE_META-regionserver/worker1:16020-0] wal.AbstractFSWAL: New WAL /hbase/WALs/worker1,16020,1703645559480/worker1%2C16020%2C1703645559480.meta.1703645604914.meta
+2023-12-27 02:53:25,102 INFO  [RS_CLOSE_META-regionserver/worker1:16020-0] regionserver.RegionCoprocessorHost: Loaded coprocessor org.apache.hadoop.hbase.coprocessor.MultiRowMutationEndpoint from HTD of hbase:meta successfully.
+2023-12-27 02:53:25,194 INFO  [StoreOpener-1588230740-1] regionserver.HStore: Created cacheConfig: cacheDataOnRead=true, cacheDataOnWrite=false, cacheIndexesOnWrite=false, cacheBloomsOnWrite=false, cacheEvictOnClose=false, cacheDataCompressed=false, prefetchOnOpen=false for 1588230740/info
+2023-12-27 02:53:25,202 INFO  [StoreOpener-1588230740-1] compactions.CompactionConfiguration: size [minCompactSize:128 MB, maxCompactSize:8.00 EB, offPeakMaxCompactSize:8.00 EB); files [minFilesToCompact:3, maxFilesToCompact:10); ratio 1.200000; off-peak ratio 5.000000; throttle point 2684354560; major period 604800000, major jitter 0.500000, min locality to compact 0.000000; tiered compaction: max_age 9223372036854775807, incoming window min 6, compaction policy for tiered window org.apache.hadoop.hbase.regionserver.compactions.ExploringCompactionPolicy, single output for minor true, compaction window factory org.apache.hadoop.hbase.regionserver.compactions.ExponentialCompactionWindowFactory, region 1588230740 columnFamilyName info
+2023-12-27 02:53:25,216 INFO  [StoreOpener-1588230740-1] regionserver.HStore: 1588230740/info created,  memstore type=DefaultMemStore, storagePolicy=HOT, verifyBulkLoads=false, parallelPutCountPrintThreshold=50, encoding=NONE, compression=NONE
+2023-12-27 02:53:25,223 INFO  [StoreOpener-1588230740-1] regionserver.HStore: Created cacheConfig: cacheDataOnRead=true, cacheDataOnWrite=false, cacheIndexesOnWrite=false, cacheBloomsOnWrite=false, cacheEvictOnClose=false, cacheDataCompressed=false, prefetchOnOpen=false for 1588230740/rep_barrier
+2023-12-27 02:53:25,224 INFO  [StoreOpener-1588230740-1] compactions.CompactionConfiguration: size [minCompactSize:128 MB, maxCompactSize:8.00 EB, offPeakMaxCompactSize:8.00 EB); files [minFilesToCompact:3, maxFilesToCompact:10); ratio 1.200000; off-peak ratio 5.000000; throttle point 2684354560; major period 604800000, major jitter 0.500000, min locality to compact 0.000000; tiered compaction: max_age 9223372036854775807, incoming window min 6, compaction policy for tiered window org.apache.hadoop.hbase.regionserver.compactions.ExploringCompactionPolicy, single output for minor true, compaction window factory org.apache.hadoop.hbase.regionserver.compactions.ExponentialCompactionWindowFactory, region 1588230740 columnFamilyName rep_barrier
+2023-12-27 02:53:25,233 INFO  [StoreOpener-1588230740-1] regionserver.HStore: 1588230740/rep_barrier created,  memstore type=DefaultMemStore, storagePolicy=HOT, verifyBulkLoads=false, parallelPutCountPrintThreshold=50, encoding=NONE, compression=NONE
+2023-12-27 02:53:25,238 INFO  [StoreOpener-1588230740-1] regionserver.HStore: Created cacheConfig: cacheDataOnRead=true, cacheDataOnWrite=false, cacheIndexesOnWrite=false, cacheBloomsOnWrite=false, cacheEvictOnClose=false, cacheDataCompressed=false, prefetchOnOpen=false for 1588230740/table
+2023-12-27 02:53:25,239 INFO  [StoreOpener-1588230740-1] compactions.CompactionConfiguration: size [minCompactSize:128 MB, maxCompactSize:8.00 EB, offPeakMaxCompactSize:8.00 EB); files [minFilesToCompact:3, maxFilesToCompact:10); ratio 1.200000; off-peak ratio 5.000000; throttle point 2684354560; major period 604800000, major jitter 0.500000, min locality to compact 0.000000; tiered compaction: max_age 9223372036854775807, incoming window min 6, compaction policy for tiered window org.apache.hadoop.hbase.regionserver.compactions.ExploringCompactionPolicy, single output for minor true, compaction window factory org.apache.hadoop.hbase.regionserver.compactions.ExponentialCompactionWindowFactory, region 1588230740 columnFamilyName table
+2023-12-27 02:53:25,241 INFO  [StoreOpener-1588230740-1] regionserver.HStore: 1588230740/table created,  memstore type=DefaultMemStore, storagePolicy=HOT, verifyBulkLoads=false, parallelPutCountPrintThreshold=50, encoding=NONE, compression=NONE
+2023-12-27 02:53:25,292 INFO  [RS_CLOSE_META-regionserver/worker1:16020-0] regionserver.HRegion: Opened 1588230740; next sequenceid=2
+2023-12-27 02:53:25,330 INFO  [RS_CLOSE_META-regionserver/worker1:16020-0] regionserver.HRegionServer: Post open deploy tasks for hbase:meta,,1.1588230740, pid=3, masterSystemTime=1703645604678
+2023-12-27 02:53:25,372 INFO  [RS_CLOSE_META-regionserver/worker1:16020-0] handler.AssignRegionHandler: Opened hbase:meta,,1.1588230740
+2023-12-27 02:53:27,591 INFO  [regionserver/worker1:16020] wal.AbstractFSWAL: WAL configuration: blocksize=256 MB, rollsize=128 MB, prefix=worker1%2C16020%2C1703645559480, suffix=, logDir=hdfs://master:9000/hbase/WALs/worker1,16020,1703645559480, archiveDir=hdfs://master:9000/hbase/oldWALs, maxLogs=32
+2023-12-27 02:53:27,609 INFO  [regionserver/worker1:16020] wal.AbstractFSWAL: New WAL /hbase/WALs/worker1,16020,1703645559480/worker1%2C16020%2C1703645559480.1703645607593
+2023-12-27 02:53:30,894 INFO  [HBase-Metrics2-1] impl.GlobalMetricRegistriesAdapter: Registering RegionServer,sub=Coprocessor.Region.CP_org.apache.hadoop.hbase.coprocessor.MultiRowMutationEndpoint Metrics about HBase RegionObservers
+2023-12-27 02:53:31,153 INFO  [RS_OPEN_PRIORITY_REGION-regionserver/worker1:16020-0] handler.AssignRegionHandler: Open hbase:namespace,,1703645610124.72b06e02038c70cf3a059aad9f21f81f.
+2023-12-27 02:53:31,172 INFO  [StoreOpener-72b06e02038c70cf3a059aad9f21f81f-1] regionserver.HStore: Created cacheConfig: cacheDataOnRead=true, cacheDataOnWrite=false, cacheIndexesOnWrite=false, cacheBloomsOnWrite=false, cacheEvictOnClose=false, cacheDataCompressed=false, prefetchOnOpen=false for 72b06e02038c70cf3a059aad9f21f81f/info
+2023-12-27 02:53:31,173 INFO  [StoreOpener-72b06e02038c70cf3a059aad9f21f81f-1] compactions.CompactionConfiguration: size [minCompactSize:128 MB, maxCompactSize:8.00 EB, offPeakMaxCompactSize:8.00 EB); files [minFilesToCompact:3, maxFilesToCompact:10); ratio 1.200000; off-peak ratio 5.000000; throttle point 2684354560; major period 604800000, major jitter 0.500000, min locality to compact 0.000000; tiered compaction: max_age 9223372036854775807, incoming window min 6, compaction policy for tiered window org.apache.hadoop.hbase.regionserver.compactions.ExploringCompactionPolicy, single output for minor true, compaction window factory org.apache.hadoop.hbase.regionserver.compactions.ExponentialCompactionWindowFactory, region 72b06e02038c70cf3a059aad9f21f81f columnFamilyName info
+2023-12-27 02:53:31,178 INFO  [StoreOpener-72b06e02038c70cf3a059aad9f21f81f-1] regionserver.HStore: 72b06e02038c70cf3a059aad9f21f81f/info created,  memstore type=DefaultMemStore, storagePolicy=HOT, verifyBulkLoads=false, parallelPutCountPrintThreshold=50, encoding=NONE, compression=NONE
+2023-12-27 02:53:31,213 INFO  [RS_OPEN_PRIORITY_REGION-regionserver/worker1:16020-0] regionserver.HRegion: Opened 72b06e02038c70cf3a059aad9f21f81f; next sequenceid=2
+2023-12-27 02:53:31,219 INFO  [RS_OPEN_PRIORITY_REGION-regionserver/worker1:16020-0] regionserver.HRegionServer: Post open deploy tasks for hbase:namespace,,1703645610124.72b06e02038c70cf3a059aad9f21f81f., pid=6, masterSystemTime=1703645611142
+2023-12-27 02:53:31,234 INFO  [RS_OPEN_PRIORITY_REGION-regionserver/worker1:16020-0] handler.AssignRegionHandler: Opened hbase:namespace,,1703645610124.72b06e02038c70cf3a059aad9f21f81f.
+2023-12-27 02:54:24,041 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x701f6152] zookeeper.ZooKeeper: Session: 0x200003b39730002 closed
+2023-12-27 02:54:24,041 INFO  [ReadOnlyZKClient-zoo1:2181,zoo2:2181,zoo3:2181@0x701f6152-EventThread] zookeeper.ClientCnxn: EventThread shut down for session: 0x200003b39730002
+2023-12-27 02:57:43,391 INFO  [LruBlockCacheStatsExecutor] hfile.LruBlockCache: totalSize=1.15 MB, freeSize=1.54 GB, max=1.54 GB, blockCount=0, accesses=0, hits=0, hitRatio=0, cachingAccesses=0, cachingHits=0, cachingHitsRatio=0,evictions=29, evicted=0, evictedPerRun=0.0
+2023-12-27 02:58:24,575 INFO  [worker1:16020Replication Statistics #0] regionserver.Replication: Global stats: WAL Edits Buffer Used=0B, Limit=268435456B
+
+2023-12-27 02:58:31,047 INFO  [RS_CLOSE_REGION-regionserver/worker1:16020-0] handler.UnassignRegionHandler: Close 72b06e02038c70cf3a059aad9f21f81f
+2023-12-27 02:58:31,050 INFO  [RS_CLOSE_REGION-regionserver/worker1:16020-0] regionserver.HRegion: Closing region hbase:namespace,,1703645610124.72b06e02038c70cf3a059aad9f21f81f.
+2023-12-27 02:58:31,053 INFO  [RS_CLOSE_REGION-regionserver/worker1:16020-0] regionserver.HRegion: Flushing 72b06e02038c70cf3a059aad9f21f81f 1/1 column families, dataSize=78 B heapSize=488 B
+2023-12-27 02:58:31,560 INFO  [RS_CLOSE_REGION-regionserver/worker1:16020-0] regionserver.DefaultStoreFlusher: Flushed memstore data size=78 B at sequenceid=6 (bloomFilter=true), to=hdfs://master:9000/hbase/data/hbase/namespace/72b06e02038c70cf3a059aad9f21f81f/.tmp/info/cd022ec523274754b6321217fbe3355b
+2023-12-27 02:58:31,670 INFO  [RS_CLOSE_REGION-regionserver/worker1:16020-0] regionserver.HStore: Added hdfs://master:9000/hbase/data/hbase/namespace/72b06e02038c70cf3a059aad9f21f81f/info/cd022ec523274754b6321217fbe3355b, entries=2, sequenceid=6, filesize=4.8 K
+2023-12-27 02:58:31,680 INFO  [RS_CLOSE_REGION-regionserver/worker1:16020-0] regionserver.HRegion: Finished flush of dataSize ~78 B/78, heapSize ~472 B/472, currentSize=0 B/0 for 72b06e02038c70cf3a059aad9f21f81f in 626ms, sequenceid=6, compaction requested=false
+2023-12-27 02:58:31,736 INFO  [RS_CLOSE_REGION-regionserver/worker1:16020-0] regionserver.HRegion: Closed hbase:namespace,,1703645610124.72b06e02038c70cf3a059aad9f21f81f.
+2023-12-27 02:58:31,737 INFO  [RS_CLOSE_REGION-regionserver/worker1:16020-0] regionserver.HRegionServer: Adding 72b06e02038c70cf3a059aad9f21f81f move to worker2,16020,1703645560728 record at close sequenceid=6
+2023-12-27 02:58:31,745 INFO  [RS_CLOSE_REGION-regionserver/worker1:16020-0] handler.UnassignRegionHandler: Closed 72b06e02038c70cf3a059aad9f21f81f
+2023-12-27 02:58:35,417 INFO  [regionserver/worker1:16020.Chore.1] regionserver.HRegionServer: MemstoreFlusherChore requesting flush of hbase:meta,,1.1588230740 because 1588230740/info has an old edit so flush to free WALs after random delay 158839 ms
+2023-12-27 03:01:14,259 INFO  [MemStoreFlusher.0] regionserver.HRegion: Flushing 1588230740 3/3 column families, dataSize=2.71 KB heapSize=5.30 KB
+2023-12-27 03:01:14,321 INFO  [MemStoreFlusher.0] regionserver.DefaultStoreFlusher: Flushed memstore data size=2.61 KB at sequenceid=13 (bloomFilter=false), to=hdfs://master:9000/hbase/data/hbase/meta/1588230740/.tmp/info/b639bc2ae85f43edb32a7a4768ecc1f8
+2023-12-27 03:01:14,770 INFO  [MemStoreFlusher.0] regionserver.DefaultStoreFlusher: Flushed memstore data size=94 B at sequenceid=13 (bloomFilter=false), to=hdfs://master:9000/hbase/data/hbase/meta/1588230740/.tmp/table/35aec121c44c4e4fb132b74b301ef358
+2023-12-27 03:01:14,794 INFO  [MemStoreFlusher.0] regionserver.HStore: Added hdfs://master:9000/hbase/data/hbase/meta/1588230740/info/b639bc2ae85f43edb32a7a4768ecc1f8, entries=15, sequenceid=13, filesize=6.4 K
+2023-12-27 03:01:14,815 INFO  [MemStoreFlusher.0] regionserver.HStore: Added hdfs://master:9000/hbase/data/hbase/meta/1588230740/table/35aec121c44c4e4fb132b74b301ef358, entries=2, sequenceid=13, filesize=4.7 K
+2023-12-27 03:01:14,817 INFO  [MemStoreFlusher.0] regionserver.HRegion: Finished flush of dataSize ~2.71 KB/2770, heapSize ~5.02 KB/5144, currentSize=0 B/0 for 1588230740 in 557ms, sequenceid=13, compaction requested=false
+2023-12-27 03:02:43,390 INFO  [LruBlockCacheStatsExecutor] hfile.LruBlockCache: totalSize=1.15 MB, freeSize=1.54 GB, max=1.54 GB, blockCount=0, accesses=0, hits=0, hitRatio=0, cachingAccesses=0, cachingHits=0, cachingHitsRatio=0,evictions=59, evicted=0, evictedPerRun=0.0
+2023-12-27 03:03:24,575 INFO  [worker1:16020Replication Statistics #0] regionserver.Replication: Global stats: WAL Edits Buffer Used=0B, Limit=268435456B
+
+2023-12-27 03:07:43,391 INFO  [LruBlockCacheStatsExecutor] hfile.LruBlockCache: totalSize=1.16 MB, freeSize=1.54 GB, max=1.54 GB, blockCount=2, accesses=2, hits=0, hitRatio=0, cachingAccesses=2, cachingHits=0, cachingHitsRatio=0,evictions=89, evicted=0, evictedPerRun=0.0
+2023-12-27 03:08:24,575 INFO  [worker1:16020Replication Statistics #0] regionserver.Replication: Global stats: WAL Edits Buffer Used=0B, Limit=268435456B
+
+2023-12-27 03:12:43,391 INFO  [LruBlockCacheStatsExecutor] hfile.LruBlockCache: totalSize=1.16 MB, freeSize=1.54 GB, max=1.54 GB, blockCount=2, accesses=4, hits=2, hitRatio=50.00%, , cachingAccesses=4, cachingHits=2, cachingHitsRatio=50.00%, evictions=119, evicted=0, evictedPerRun=0.0
+2023-12-27 03:13:24,575 INFO  [worker1:16020Replication Statistics #0] regionserver.Replication: Global stats: WAL Edits Buffer Used=0B, Limit=268435456B
+

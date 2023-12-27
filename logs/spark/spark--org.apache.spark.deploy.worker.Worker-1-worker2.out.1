@@ -1,0 +1,146 @@
+Spark Command: /usr/lib/jvm/java-1.8-openjdk/bin/java -cp /usr/program/spark/conf/:/usr/program/spark/jars/*:/usr/program/hadoop/etc/hadoop/:/usr/program/hadoop/share/hadoop/tools/lib/*:/usr/program/hadoop/share/hadoop/common/lib/*:/usr/program/hadoop/share/hadoop/common/*:/usr/program/hadoop/share/hadoop/hdfs/:/usr/program/hadoop/share/hadoop/hdfs/lib/*:/usr/program/hadoop/share/hadoop/hdfs/*:/usr/program/hadoop/share/hadoop/mapreduce/lib/*:/usr/program/hadoop/share/hadoop/mapreduce/*:/usr/program/hadoop/share/hadoop/yarn/:/usr/program/hadoop/share/hadoop/yarn/lib/*:/usr/program/hadoop/share/hadoop/yarn/* -Xmx1g org.apache.spark.deploy.worker.Worker --webui-port 8982 --port 8882 spark://master:7077
+========================================
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/program/spark/jars/slf4j-log4j12-1.7.30.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+2023-12-27 02:49:38,887 INFO worker.Worker: Started daemon with process name: 228@worker2
+2023-12-27 02:49:38,907 INFO util.SignalUtils: Registered signal handler for TERM
+2023-12-27 02:49:38,916 INFO util.SignalUtils: Registered signal handler for HUP
+2023-12-27 02:49:38,916 INFO util.SignalUtils: Registered signal handler for INT
+2023-12-27 02:49:40,624 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2023-12-27 02:49:41,072 INFO spark.SecurityManager: Changing view acls to: root
+2023-12-27 02:49:41,073 INFO spark.SecurityManager: Changing modify acls to: root
+2023-12-27 02:49:41,081 INFO spark.SecurityManager: Changing view acls groups to: 
+2023-12-27 02:49:41,092 INFO spark.SecurityManager: Changing modify acls groups to: 
+2023-12-27 02:49:41,093 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+2023-12-27 02:49:44,090 INFO util.Utils: Successfully started service 'sparkWorker' on port 8882.
+2023-12-27 02:49:45,306 INFO worker.Worker: Starting Spark worker worker2:8882 with 4 cores, 14.5 GiB RAM
+2023-12-27 02:49:45,323 INFO worker.Worker: Running Spark version 3.0.0
+2023-12-27 02:49:45,323 INFO worker.Worker: Spark home: /usr/program/spark
+2023-12-27 02:49:45,389 INFO resource.ResourceUtils: ==============================================================
+2023-12-27 02:49:45,391 INFO resource.ResourceUtils: Resources for spark.worker:
+
+2023-12-27 02:49:45,391 INFO resource.ResourceUtils: ==============================================================
+2023-12-27 02:49:45,566 INFO util.log: Logging initialized @11827ms to org.sparkproject.jetty.util.log.Slf4jLog
+2023-12-27 02:49:45,888 INFO server.Server: jetty-9.4.z-SNAPSHOT; built: 2019-04-29T20:42:08.989Z; git: e1bc35120a6617ee3df052294e433f3a25ce7097; jvm 1.8.0_275-b01
+2023-12-27 02:49:46,034 INFO server.Server: Started @12297ms
+2023-12-27 02:49:46,187 INFO server.AbstractConnector: Started ServerConnector@19f8eaa3{HTTP/1.1,[http/1.1]}{172.28.1.3:8982}
+2023-12-27 02:49:46,193 INFO util.Utils: Successfully started service 'WorkerUI' on port 8982.
+2023-12-27 02:49:46,256 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@411cb5f9{/logPage,null,AVAILABLE,@Spark}
+2023-12-27 02:49:46,264 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3665260f{/logPage/json,null,AVAILABLE,@Spark}
+2023-12-27 02:49:46,264 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@461ef0fe{/,null,AVAILABLE,@Spark}
+2023-12-27 02:49:46,273 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@35ba42c0{/json,null,AVAILABLE,@Spark}
+2023-12-27 02:49:46,300 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7a8a1a83{/static,null,AVAILABLE,@Spark}
+2023-12-27 02:49:46,301 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@227d349d{/log,null,AVAILABLE,@Spark}
+2023-12-27 02:49:46,315 INFO ui.WorkerWebUI: Bound WorkerWebUI to 172.28.1.3, and started at http://localhost:8982
+2023-12-27 02:49:46,319 INFO worker.Worker: Connecting to master master:7077...
+2023-12-27 02:49:46,395 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5e324390{/metrics/json,null,AVAILABLE,@Spark}
+2023-12-27 02:49:46,578 WARN worker.Worker: Failed to connect to master master:7077
+org.apache.spark.SparkException: Exception thrown in awaitResult: 
+	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:302)
+	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+	at org.apache.spark.rpc.RpcEnv.setupEndpointRefByURI(RpcEnv.scala:101)
+	at org.apache.spark.rpc.RpcEnv.setupEndpointRef(RpcEnv.scala:109)
+	at org.apache.spark.deploy.worker.Worker$$anon$1.run(Worker.scala:277)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Failed to connect to master/172.28.1.1:7077
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:253)
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:195)
+	at org.apache.spark.rpc.netty.NettyRpcEnv.createClient(NettyRpcEnv.scala:204)
+	at org.apache.spark.rpc.netty.Outbox$$anon$1.call(Outbox.scala:202)
+	at org.apache.spark.rpc.netty.Outbox$$anon$1.call(Outbox.scala:198)
+	... 4 more
+Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: master/172.28.1.1:7077
+Caused by: java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:716)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:330)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:702)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2023-12-27 02:50:01,331 INFO worker.Worker: Retrying connection to master (attempt # 1)
+2023-12-27 02:50:01,333 INFO worker.Worker: Connecting to master master:7077...
+2023-12-27 02:50:01,340 WARN worker.Worker: Failed to connect to master master:7077
+org.apache.spark.SparkException: Exception thrown in awaitResult: 
+	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:302)
+	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+	at org.apache.spark.rpc.RpcEnv.setupEndpointRefByURI(RpcEnv.scala:101)
+	at org.apache.spark.rpc.RpcEnv.setupEndpointRef(RpcEnv.scala:109)
+	at org.apache.spark.deploy.worker.Worker$$anon$1.run(Worker.scala:277)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Failed to connect to master/172.28.1.1:7077
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:253)
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:195)
+	at org.apache.spark.rpc.netty.NettyRpcEnv.createClient(NettyRpcEnv.scala:204)
+	at org.apache.spark.rpc.netty.Outbox$$anon$1.call(Outbox.scala:202)
+	at org.apache.spark.rpc.netty.Outbox$$anon$1.call(Outbox.scala:198)
+	... 4 more
+Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: master/172.28.1.1:7077
+Caused by: java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:716)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:330)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:702)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2023-12-27 02:50:16,336 INFO worker.Worker: Retrying connection to master (attempt # 2)
+2023-12-27 02:50:16,336 INFO worker.Worker: Connecting to master master:7077...
+2023-12-27 02:50:16,351 WARN worker.Worker: Failed to connect to master master:7077
+org.apache.spark.SparkException: Exception thrown in awaitResult: 
+	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:302)
+	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+	at org.apache.spark.rpc.RpcEnv.setupEndpointRefByURI(RpcEnv.scala:101)
+	at org.apache.spark.rpc.RpcEnv.setupEndpointRef(RpcEnv.scala:109)
+	at org.apache.spark.deploy.worker.Worker$$anon$1.run(Worker.scala:277)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Failed to connect to master/172.28.1.1:7077
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:253)
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:195)
+	at org.apache.spark.rpc.netty.NettyRpcEnv.createClient(NettyRpcEnv.scala:204)
+	at org.apache.spark.rpc.netty.Outbox$$anon$1.call(Outbox.scala:202)
+	at org.apache.spark.rpc.netty.Outbox$$anon$1.call(Outbox.scala:198)
+	... 4 more
+Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: master/172.28.1.1:7077
+Caused by: java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:716)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:330)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:702)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2023-12-27 02:50:31,319 INFO worker.Worker: Retrying connection to master (attempt # 3)
+2023-12-27 02:50:31,320 INFO worker.Worker: Connecting to master master:7077...
+2023-12-27 02:50:31,331 INFO client.TransportClientFactory: Successfully created connection to master/172.28.1.1:7077 after 7 ms (0 ms spent in bootstraps)
+2023-12-27 02:50:31,396 INFO worker.Worker: Successfully registered with master spark://master:7077
