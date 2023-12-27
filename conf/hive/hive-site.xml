@@ -30,7 +30,7 @@
     </property>
     <property>
         <name>javax.jdo.option.ConnectionURL</name>
-        <value>jdbc:postgresql://hivemetastore:5432/hivemetastoredb</value>
+        <value>jdbc:postgresql://hivemetastore:5432/hivemetastoredb?createDatabaseIfNotExist=true</value>
     </property>
     <property>
         <name>javax.jdo.option.ConnectionUserName</name>

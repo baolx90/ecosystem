@@ -3,6 +3,6 @@ build:
 down:
 	docker-compose down --volumes --remove-orphans
 run:
-	make down && docker-compose up --scale worker=3
+	make down && docker-compose up -d
 stop:
 	docker-compose stop
