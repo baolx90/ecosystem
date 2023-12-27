@@ -188,7 +188,7 @@ services:
       # Spark Job UI
       - 8101:8042
     volumes:
-      - ./spark-apps:/usr/program/spark-apps
+      - ./spark_apps:/usr/program/spark_apps
       - ./data:/data
       - ./logs/hadoop:/usr/program/hadoop/logs
       - ./logs/hbase:/usr/program/hbase/logs
@@ -237,7 +237,7 @@ services:
       # Spark Job UI
       - 8102:8042
     volumes:
-      - ./spark-apps:/usr/program/spark-apps
+      - ./spark_apps:/usr/program/spark_apps
       - ./data:/data
       - ./logs/hadoop:/usr/program/hadoop/logs
       - ./logs/hbase:/usr/program/hbase/logs
