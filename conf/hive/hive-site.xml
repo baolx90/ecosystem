@@ -101,7 +101,7 @@
     </property>
     <property>
         <name>hive.server2.authentication</name>
-        <value>NONE</value>
+        <value>NOSASL</value>
     </property>
     <!-- To Close ACID -->
     <property>
