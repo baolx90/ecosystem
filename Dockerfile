@@ -171,7 +171,7 @@ COPY conf/spark/spark-defaults.conf "${SPARK_CONF_DIR}"/
 #    && ln -s $SPARK_HOME/jars/spark-network-common_*.jar $HIVE_HOME/lib
 
 # HBase setup
-COPY conf/hbase/* "${HBASE_CONF_DIR}"
+COPY conf/hbase/* "${HBASE_CONF_DIR}"/
 COPY conf/hadoop/core-site.xml "${HBASE_CONF_DIR}"
 COPY conf/hadoop/hdfs-site.xml "${HBASE_CONF_DIR}"
 RUN echo "export JAVA_HOME=${JAVA_HOME}" >>  "${HBASE_CONF_DIR}/hbase-env.sh"
