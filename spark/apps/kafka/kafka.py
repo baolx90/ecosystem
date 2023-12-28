@@ -7,7 +7,7 @@ import json
 import time
 
 kafka_options = {
-    "kafka.bootstrap.servers": "baolx.local:9092",
+    "kafka.bootstrap.servers": "192.168.1.96:9092",
     "subscribe": "operate.public.shopify_app_credits",
     "startingOffsets": "earliest"
 }

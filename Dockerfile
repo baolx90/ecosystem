@@ -24,6 +24,12 @@ RUN apk add --no-cache \
 # https://github.com/hadolint/hadolint/wiki/DL4006
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+# PySpark - comment out if you don't want it in order to save image space
+RUN apk add --no-cache \
+    'python3=~3.7' \
+    'python3-dev=~3.7' \
+ && ln -s /usr/bin/python3 /usr/bin/python
+
 # Hadoop
 ENV HADOOP_VERSION=3.2.0
 ENV HADOOP_HOME /usr/hadoop
@@ -53,8 +59,8 @@ RUN curl --progress-bar -L \
   && chmod 777 "${HIVE_HOME}/var/log"
 
 # Spark
-ENV SPARK_VERSION=2.4.5
-ENV SPARK_PACKAGE "spark-${SPARK_VERSION}-bin-without-hadoop"
+ENV SPARK_VERSION=3.5.0
+ENV SPARK_PACKAGE "spark-${SPARK_VERSION}-bin-hadoop3"
 ENV SPARK_HOME /usr/spark
 RUN curl --progress-bar -L --retry 3 \
   "https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/${SPARK_PACKAGE}.tgz" \
@@ -92,26 +98,6 @@ RUN curl --progress-bar -L --retry 3 \
  && mv "/usr/hbase-${HBASE_VERSION}" "${HBASE_HOME}" \
  && chown -R root:root "${HBASE_HOME}"
 
-# For inscrutable reasons, Spark distribution doesn't include spark-hive.jar
-# Livy attempts to load it though, and will throw
-# java.lang.ClassNotFoundException: org.apache.spark.sql.hive.HiveContext
-ARG SCALA_VERSION=2.11
-RUN curl --progress-bar -L \
-    "https://repo1.maven.org/maven2/org/apache/spark/spark-hive_${SCALA_VERSION}/${SPARK_VERSION}/spark-hive_${SCALA_VERSION}-${SPARK_VERSION}.jar" \
-    --output "${SPARK_HOME}/jars/spark-hive_${SCALA_VERSION}-${SPARK_VERSION}.jar"
-
-# PySpark - comment out if you don't want it in order to save image space
-RUN apk add --no-cache \
-    'python3=~3.7' \
-    'python3-dev=~3.7' \
- && ln -s /usr/bin/python3 /usr/bin/python
-
-# SparkR - comment out if you don't want it in order to save image space
-RUN apk add --no-cache \
-    'R=~3.6' \
-    'R-dev=~3.6' \
-    'libc-dev=~0.7' \
- && R -e 'install.packages("knitr", repos = "http://cran.us.r-project.org")'
 
 # Common settings
 ENV JAVA_HOME "/usr/lib/jvm/java-1.8-openjdk"
@@ -131,6 +117,7 @@ ENV YARN_NODEMANAGER_USER="root"
 ENV LD_LIBRARY_PATH="${HADOOP_HOME}/lib/native:${LD_LIBRARY_PATH}"
 ENV HADOOP_CONF_DIR="${HADOOP_HOME}/etc/hadoop"
 ENV HADOOP_LOG_DIR="${HADOOP_HOME}/logs"
+COPY conf/hadoop/capacity-scheduler.xml "${HADOOP_CONF_DIR}"
 COPY conf/hadoop/core-site.xml "${HADOOP_CONF_DIR}"
 COPY conf/hadoop/hadoop-env.sh "${HADOOP_CONF_DIR}"
 COPY conf/hadoop/hdfs-site.xml "${HADOOP_CONF_DIR}"
@@ -164,11 +151,11 @@ COPY conf/spark/spark-defaults.conf "${SPARK_CONF_DIR}"/
 
 # Spark with Hive
 # TODO enable in Spark 3.0
-#ENV SPARK_DIST_CLASSPATH=$SPARK_DIST_CLASSPATH:$HIVE_HOME/lib/*
-#COPY conf/hive/hive-site.xml $SPARK_CONF_DIR/
-#RUN ln -s $SPARK_HOME/jars/scala-library-*.jar $HIVE_HOME/lib \
-#    && ln -s $SPARK_HOME/jars/spark-core_*.jar $HIVE_HOME/lib \
-#    && ln -s $SPARK_HOME/jars/spark-network-common_*.jar $HIVE_HOME/lib
+ENV SPARK_DIST_CLASSPATH=$SPARK_DIST_CLASSPATH:$HIVE_HOME/lib/*
+COPY conf/hive/hive-site.xml $SPARK_CONF_DIR/
+RUN ln -s $SPARK_HOME/jars/scala-library-*.jar $HIVE_HOME/lib \
+    && ln -s $SPARK_HOME/jars/spark-core_*.jar $HIVE_HOME/lib \
+    && ln -s $SPARK_HOME/jars/spark-network-common_*.jar $HIVE_HOME/lib
 
 # HBase setup
 COPY conf/hbase/* "${HBASE_CONF_DIR}"/

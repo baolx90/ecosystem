@@ -45,12 +45,12 @@ if [ -z "${SPARK_MASTER_ADDRESS}" ]; then
   hdfs dfs -mkdir -p /hive
   hdfs dfs -chmod -R 755 /hive
 
-  # Spark on YARN
-  # SPARK_JARS_HDFS_PATH=/spark-jars
-  # if ! hadoop fs -test -d "${SPARK_JARS_HDFS_PATH}"
-  # then
-  #   hadoop dfs -copyFromLocal "${SPARK_HOME}/jars" "${SPARK_JARS_HDFS_PATH}"
-  # fi
+  Spark on YARN
+  SPARK_JARS_HDFS_PATH=/spark-jars
+  if ! hadoop fs -test -d "${SPARK_JARS_HDFS_PATH}"
+  then
+    hadoop dfs -put $SPARK_HOME/jars/* $SPARK_JARS_HDFS_PATH/
+  fi
 
   "${SPARK_HOME}/sbin/start-master.sh" -h master &
   "${SPARK_HOME}/sbin/start-history-server.sh" &

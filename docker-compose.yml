@@ -127,7 +127,7 @@ services:
       - 16010:16010
     volumes:
       - ./data:/data
-      - ./spark_apps:/usr/spark/apps
+      - ./spark/apps:/usr/spark/apps
     networks:
       spark_net:
         ipv4_address: 172.28.1.1

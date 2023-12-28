@@ -46,10 +46,6 @@
         <name>hive.execution.engine</name>
         <value>spark</value>
     </property>
-    <property>
-        <name>spark.yarn.jars</name>
-        <value>hdfs://master:9000/spark-jars/*</value>
-    </property>
 
     <!-- To be able to execute Hive queries from Zeppelin -->
     <property>

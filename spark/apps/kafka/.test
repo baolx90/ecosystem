@@ -52,6 +52,12 @@ spark-submit \
 ./spark-apps/kafka/kafka.py 
 
 spark-submit \
---master yarn --deploy-mode cluster \
+--master spark://master:7077 \
 usr/spark/apps/test.py
 
+
+spark-submit \
+--master yarn --deploy-mode client \
+--executor-memory 1G --verbose --driver-memory 512M \
+--executor-cores 1 --driver-cores 1 --num-executors 2 --queue default \
+usr/spark/apps/test.py
