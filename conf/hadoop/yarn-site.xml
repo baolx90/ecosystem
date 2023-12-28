@@ -30,7 +30,7 @@
      this property should be lower than the total memory of that machine. -->
     <property>
         <name>yarn.nodemanager.resource.memory-mb</name>
-        <value>4096</value>
+        <value>8192</value>
     </property>
 
     <!-- Resource manager can only allocate memory to containers in increments
@@ -42,7 +42,7 @@
     run concurrently. -->
     <property>
         <name>yarn.scheduler.maximum-allocation-mb</name>
-        <value>1536</value>
+        <value>4096</value>
     </property>
     <property>
         <name>yarn.scheduler.minimum-allocation-mb</name>
@@ -76,30 +76,11 @@
         <name>yarn.nodemanager.vmem-check-enabled</name>
         <value>false</value>
     </property>
-    <property>
-        <name>yarn.nodemanager.pmem-check-enabled</name>
-        <value>false</value>
-    </property>
+
     <property>
         <description>To enable RM web ui2 application.</description>
         <name>yarn.webapp.ui2.enable</name>
         <value>true</value>
     </property>
-	<property>
-        <name>yarn.nodemanager.pmem-check-enabled</name>
-        <value>false</value>
-    </property>
-
-    <!--  -->
-    <property>
-        <name>yarn.log-aggregation-enable</name>
-        <value>true</value>
-    </property>
-    <!--  -->
-    <property>
-        <name>yarn.log-aggregation.retain-seconds</name>
-        <value>604800</value>
-    </property>
-
 
 </configuration>

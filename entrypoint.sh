@@ -85,4 +85,19 @@ fi
 
 echo "All initializations finished!"
 
-tail -f /dev/null
+# tail -f /dev/null
+
+/scripts/parallel_commands.sh "scripts/watchdir ${HADOOP_LOG_DIR}" "scripts/watchdir ${SPARK_LOG_DIR}"
+
+# Stop all
+if [ "${HADOOP_NODE}" == "namenode" ]; then
+  hdfs namenode -format
+  hdfs --daemon stop namenode
+  hdfs --daemon stop secondarynamenode
+  yarn --daemon stop resourcemanager
+  mapred --daemon stop historyserver
+fi
+if [ "${HADOOP_NODE}" == "datanode" ]; then
+  hdfs --daemon stop datanode
+  yarn --daemon stop nodemanager
+fi
