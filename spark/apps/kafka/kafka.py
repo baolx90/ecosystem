@@ -28,7 +28,7 @@ def create_table(connection, table_name):
     return connection.table(table_name)
 
 def persist_to_hbase(batch_df, batch_id):
-    connection = happybase.Connection('localhost')
+    connection = happybase.Connection('192.168.1.96')
     # TABLE_NAME = 'shopify_histories'
     # table = create_table(connection, TABLE_NAME)
     table = connection.table('shopify_histories')
