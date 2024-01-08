@@ -3,33 +3,50 @@ from datetime import datetime, timedelta
 from pyspark.sql.types import *
 from pyspark.sql.functions import *
 import json
+from pyspark.sql.functions import *
+import happybase
 
 import time
 
 kafka_options = {
     "kafka.bootstrap.servers": "192.168.1.96:9092",
-    "subscribe": "operate.public.shopify_app_credits",
+    "subscribe": "operate.public.shopify_histories",
     "startingOffsets": "earliest"
 }
 
-def parse_data_from_kafka_message(sdf, schema):
-    # sdf = sdf.select(json_tuple(col("value"),"payload")) \
-    #     .toDF("payload")
-    # print(sdf)
-    # print(sdf['value'])
-    # # sdf['value'].collect().show()
-    col = split(sdf['value'], ',')
-    print(col)
-    for idx, field in enumerate(schema): 
-        print(idx, field)
-        sdf = sdf.withColumn(field.name, col.getItem(idx).cast(field.dataType))
-    return sdf.select([field.name for field in schema])
+def create_table(connection, table_name):
+    try:
+        connection.create_table(
+            table_name,
+            {
+                'info': dict()
+            })
+    except grpcface.NetworkError as exp:
+        if exp.code != interfaces.StatusCode.ALREADY_EXISTS:
+            raise
+        print("Table already exists.")
+    return connection.table(table_name)
 
-def write_to_postgres(df, epoch_id):
-        mode="append"
-        url = "jdbc:postgresql://192.168.1.54:5432/kafka"
-        properties = {"user": "postgres", "password": "x9huFSwx8ESC3vg3", "driver": "org.postgresql.Driver"}
-        df.write.jdbc(url=url, table="bao", mode=mode, properties=properties)
+def persist_to_hbase(batch_df, batch_id):
+    connection = happybase.Connection('localhost')
+    # TABLE_NAME = 'shopify_histories'
+    # table = create_table(connection, TABLE_NAME)
+    table = connection.table('shopify_histories')
+
+    for collect in batch_df.collect():
+        table.put(
+            (collect.id), 
+            {
+                b'info:id': (collect.id),
+                b'info:shop_id': (collect.shop_id),
+                b'info:app_id': (collect.app_id),
+                b'info:app_name': (collect.app_name),
+                b'info:shopify_domain': (collect.shopify_domain),
+            }
+        )
+    
+
+    connection.close()
 
 if __name__ == "__main__":
     print("Stream Data Processing Starting ...")
@@ -37,24 +54,42 @@ if __name__ == "__main__":
 
     spark = SparkSession \
         .builder \
-        .master("spark://master:7077")
         .appName("PySpark Structured Streaming with Kafka Demo") \
         .config('spark.jars.packages', 'org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1') \
         .config("spark.sql.shuffle.partitions", 4)\
+        .enableHiveSupport() \
         .getOrCreate()
 
     df = spark\
-        .read\
+        .readStream\
         .format("kafka")\
         .options(**kafka_options)\
         .load()
 
+
+    # df1 = df.select(explode(split(df.data, '\n')))
+    # df1.printSchema()
+    # df1.show(truncate=False)
+    # Write data to employee_data and store checkpoint
+
+    # query = df1.writeStream.outputMode("append")\
+    #     .option("checkpointLocation","/Users/arvin/checkpoint")\
+    #     .option("path","hdfs://master:9000/usr/hive/warehouse/test_data") \
+    #     .start()
+    # query.awaitTermination()
     schema = StructType([ \
-        StructField("id", IntegerType()), \
-        StructField("shop_id", IntegerType()), \
-        StructField("app_id", IntegerType()), \
-        StructField("app_name", StringType()) \
+        StructField("id", StringType()),
+        StructField("shop_id", StringType()),
+        StructField("app_id", StringType()),
+        StructField("app_name", StringType()),
+        StructField("shopify_domain", StringType()),
     ])
+
+    # query = df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)") \
+    #     .write \
+    #     .format("console") \
+    #     .start()
+
 
     # json_df = df.selectExpr("CAST(value AS STRING) as event_value").select(from_json("event_value",schema).alias("value"))
     # json_df.writeStream \
@@ -67,20 +102,162 @@ if __name__ == "__main__":
     # json_df = df.selectExpr("CAST(value AS STRING) as value")
 
     # json_df.show(truncate=False)
+    # payload_df = df.selectExpr("CAST(value AS STRING) as value")\
+    #     .alias("value")\
+    #     .select(json_tuple(col("value"),"payload"))\
+    #     .toDF("payload")\
+    #     .select(json_tuple(col("payload"),"before","after","source","op")) \
+    #     .toDF("before","after","source","op")\
+    #     .selectExpr("CAST(after AS STRING) as after")\
+    #     .alias("after")
+    #     .withColumn('id', after.getItem(idx).cast(field.dataType))
+    # value_test = parse_data_from_kafka_message(payload_df, schema)
 
-    payload_df = df.selectExpr("CAST(value AS STRING) as value").alias("value")\
-        .select(json_tuple(col("value"),"payload")).toDF("payload")
+    # value_test.show(truncate=False)
+    # ok
+    payload_df = df.selectExpr("CAST(value AS STRING) as value")\
+        .alias("value")\
+        .select(json_tuple(col("value"),"payload"))\
+        .toDF("payload")\
+        .select(json_tuple(col("payload"),"before","after","source","op")) \
+        .toDF("before","after","source","op")\
+        .selectExpr("CAST(after AS STRING) as after")\
+        .alias("after")\
+        .withColumn("after",from_json(col("after"),schema))\
+        .select("after.*")
 
+    query = payload_df.writeStream.format("console") \
+        .outputMode("append").foreachBatch(persist_to_hbase).start()
+    query.awaitTermination()
+
+
+    # for k in payload_df.collect():
+    #     print(k.id)
+    #     a = spark.read.json(k.after)
+    #     print(a)
+
+    # query = payload_df.writeStream\
+    #     .foreachBatch(foreach_batch_function)\
+    #     .start()
+    # payload_df.printSchema()
+    # payload_df.show(truncate=False)
+    # for k in payload_df.collect():
+    #     print(payload_df.after)
+    #     a = spark.read.json(k.after)
+    #     print(a)
+
+    # payload_df = df.selectExpr("CAST(value AS STRING) as value")\
+    #     .alias("value")\
+    #     .select(json_tuple(col("value"),"payload"))\
+    #     .toDF("payload")\
+    #     .select(json_tuple(col("payload"),"before","after","source","op")) \
+    #     .toDF("before","after","source","op")\
+    #     .selectExpr("CAST(after AS STRING) as after")\
+    #     .alias("after")\
+    #     .withColumn("after",from_json(col("after"),schema))\
+    #     .select("after.*")
+
+    # # value_test = parse_data_from_kafka_message(payload_df, schema)
+    # # df2 = payload_df.withColumn("after",from_json(payload_df.after,schema)).select("after.*")
+    # payload_df.printSchema()
+    # payload_df.show(truncate=False)
+    # payload_df.write.mode("overwrite").saveAsTable("test_table")
+
+    # ok
+
+    # # value_test = parse_data_from_kafka_message(payload_df, schema)
+    # df2 = payload_df.withColumn("after",from_json(payload_df.after,MapType(StringType(),StringType())))
+    # # df2.printSchema()
+    # df2.show(truncate=False)
+
+    # value_test = df2.rdd.map(lambda x: x.after)
+    # # df3=df2.rdd.map(lambda x: \
+    # #     (\
+    # #         int(x.after["id"]),\
+    # #         int(x.after["shop_id"]),\
+    # #         int(x.after["app_id"]),\
+    # #         x.after["app_name"]\
+    # #     )\
+    # # )
+    # # value_test.printSchema()
+    # print(value_test)
+    # # value_test.show()
+
+
+    # payload_df = df.selectExpr("CAST(value AS STRING) as value")\
+    #     .alias("value")\
+    #     .select(json_tuple(col("value"),"payload"))\
+    #     .toDF("payload")\
+    #     .select(json_tuple(col("payload"),"before","after","source","op")) \
+    #     .toDF("before","after","source","op")\
+    #     .selectExpr("CAST(after AS STRING) as after")\
+    #     .alias("after")
+    # df2 = payload_df.withColumn("after",from_json(payload_df.after,MapType(StringType(),StringType())))
+    # df2.printSchema()
+    # df2.show(truncate=False)
+
+    # df3=df2.rdd.map(lambda x: \
+    #     (x.after["id"],x.after["shop_id"])) \
+    #     .toDF(["id","shop_id"])
+    # df3.printSchema()
+    # df3.show()
+
+    # for k in df2.collect():
+    #     print(k.after)
+    #     a = spark.read.json(k.after)
+    #     print(a)
+
+
+    # a = payload_df.map(lambda x: json.loads(x))\
+    #     .map(lambda x: x['after'])\
+    #     .foreach(lambda x: print(x))
+    #     .selectExpr("CAST(after AS STRING) as after")\
+    #     .alias("after")\
+    #     .select(json_tuple(col("after"),"id","shop_id"))\
+    #     .toDF("id",)\
+
+
+    # value_test.printSchema()
+    # value_test.show()
+    # columns = ["id", "name","age","gender"]
+
+    # # Create DataFrame 
+    # data = [(1, "James",30,"M"), (2, "Ann",40,"F"),
+    #     (3, "Jeff",41,"M"),(4, "Jennifer",20,"F")]
+    # sampleDF = spark.sparkContext.parallelize(data).toDF(columns)
+    # payload_df.show()
+
+    # for k in payload_df.collect():
+    #     a = k.selectExpr("CAST(after AS STRING) as value").alias("value")
+    #     a.show()
+        # spark.read.json(k.__getitem__('after'))
+        # a = spark.createDataFrame([(k.__getitem__('after'))],["after"])
+        # a.select(json_tuple(k("after"),"id","shop_id","app_id")) \
+        #     .toDF("id","shop_id","app_id") \
+        #     .show(truncate=False)
+        # print(k.__getitem__('after'))
+        # a=spark.createDataFrame([(1, jsonString)],["id","value"])
+        # print(spark.read.json(k.__getitem__('after')))
+
+    # sampleDF = payload_df.collect()
+    # df = df.selectExpr("CAST(value AS STRING)")
+
+    # df = df.select(json_tuple(col("value"),"payload")) \
+    #     .toDF("payload")
+    # df = df.select(json_tuple(col("payload"),"before","after","source","op")) \
+    #     .toDF("before","after","source","op")
+    # df.show()
+    # print(sampleDF.after)
     # a = payload_df.withColumn("payload", to_json(col("payload")))
-    # a.show(truncate=False)
-    payload_df.show(truncate=False)
+    # sampleDF.show(truncate=False)
+    # payload_df.show(truncate=False)
     # json_df = df.selectExpr("CAST(value AS STRING) as value")
     # for item in payload_df.collect():
     #     print(item)
     # payload_df.show(truncate=False)
 
     # payload_df
-    spark.stop()
+    # spark.stop()
 
 
     # # Implementing the JSON functions in Databricks in PySpark

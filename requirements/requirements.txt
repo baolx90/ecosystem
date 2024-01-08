@@ -7,4 +7,4 @@
 #
 pyspark
 python-dateutil
-pyarrow
+happybase

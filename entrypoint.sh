@@ -74,7 +74,7 @@ if [ -n "${HBASE_ROLE}" ]; then
     fi
     if [ "${role}" = "thrift" ]; then
         echo "`date` Starting thrift on `hostname`" 
-        hbase-daemon.sh start thrift2 || echo "error: start thrift2 fail on `hostname`"
+        hbase-daemon.sh start thrift || echo "error: start thrift fail on `hostname`"
     fi
     if [ "${role}" = "hmaster_backup" ]; then
         echo "`date` Starting hmaster backup on `hostname`" 

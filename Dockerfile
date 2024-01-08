@@ -98,6 +98,11 @@ RUN curl --progress-bar -L --retry 3 \
  && mv "/usr/hbase-${HBASE_VERSION}" "${HBASE_HOME}" \
  && chown -R root:root "${HBASE_HOME}"
 
+# Install python deps
+COPY spark/jars/* /usr/spark/jars/
+COPY requirements/requirements.txt .
+RUN /usr/bin/python3.7 -m pip install --upgrade pip
+RUN pip3 install -r requirements.txt
 
 # Common settings
 ENV JAVA_HOME "/usr/lib/jvm/java-1.8-openjdk"
@@ -148,12 +153,15 @@ ENV SPARK_DIST_CLASSPATH="${HADOOP_CONF_DIR}:${HADOOP_HOME}/share/hadoop/tools/l
 COPY conf/hadoop/core-site.xml "${SPARK_CONF_DIR}"/
 COPY conf/hadoop/hdfs-site.xml "${SPARK_CONF_DIR}"/
 COPY conf/spark/spark-defaults.conf "${SPARK_CONF_DIR}"/
+COPY conf/hbase/hbase-site.xml "${SPARK_CONF_DIR}"/
+
 
 # Spark with Hive
 # TODO enable in Spark 3.0
 ENV SPARK_DIST_CLASSPATH=$SPARK_DIST_CLASSPATH:$HIVE_HOME/lib/*
 COPY conf/hive/hive-site.xml $SPARK_CONF_DIR/
 RUN ln -s $SPARK_HOME/jars/scala-library-*.jar $HIVE_HOME/lib \
+    && ln -s $SPARK_HOME/jars/scala-library-*.jar $HBASE_HOME/lib \
     && ln -s $SPARK_HOME/jars/spark-core_*.jar $HIVE_HOME/lib \
     && ln -s $SPARK_HOME/jars/spark-network-common_*.jar $HIVE_HOME/lib
 
@@ -162,6 +170,13 @@ COPY conf/hbase/* "${HBASE_CONF_DIR}"/
 COPY conf/hadoop/core-site.xml "${HBASE_CONF_DIR}"
 COPY conf/hadoop/hdfs-site.xml "${HBASE_CONF_DIR}"
 RUN echo "export JAVA_HOME=${JAVA_HOME}" >>  "${HBASE_CONF_DIR}/hbase-env.sh"
+
+RUN wget http://canali.web.cern.ch/res/hbase-spark-1.0.1-SNAPSHOT_spark331_hbase2415.jar
+RUN mv hbase-spark-1.0.1-SNAPSHOT_spark331_hbase2415.jar "${HBASE_HOME}/lib/"
+
+RUN wget http://canali.web.cern.ch/res/hbase-spark-protocol-shaded-1.0.1-SNAPSHOT_spark331_hbase2415.jar
+RUN mv hbase-spark-protocol-shaded-1.0.1-SNAPSHOT_spark331_hbase2415.jar "${HBASE_HOME}/lib/"
+
 
 # Clean up
 RUN rm -rf "${HIVE_HOME}/examples" \

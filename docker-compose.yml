@@ -101,7 +101,7 @@ services:
       SPARK_MASTER: yarn
       LOCAL_DIR_WHITELIST: /data/batches/
       ENABLE_HIVE_CONTEXT: 'false'
-      HBASE_ROLE: hmaster
+      HBASE_ROLE: hmaster thrift
       HBASE_MASTER_HOSTNAME: master
     expose:
       - 1-65535
@@ -125,9 +125,14 @@ services:
       - 10000:10000
       # HBase UI
       - 16010:16010
+      # HBase thrift
+      - 9090:9090
+      - 9095:9095
+      - 9091:9091
     volumes:
       - ./data:/data
-      - ./spark/apps:/usr/spark/apps
+      - ./spark/apps:/spark_apps
+      - ./spark/jars:/spark_jars
     networks:
       spark_net:
         ipv4_address: 172.28.1.1
@@ -164,6 +169,8 @@ services:
       - 8081:8081
     volumes:
       - ./data:/data
+      - ./spark/apps:/spark_apps
+      - ./spark/jars:/spark_jars
     networks:
       spark_net:
         ipv4_address: 172.28.1.2
@@ -190,7 +197,7 @@ services:
       SPARK_MASTER_HOST: 172.28.1.1
       HADOOP_NODE: datanode
       HADOOP_DATANODE_UI_PORT: 9865
-      HBASE_ROLE: regionserver thrift
+      HBASE_ROLE: regionserver
       HBASE_MASTER_HOSTNAME: master
     expose:
       - 1-65535
@@ -201,6 +208,8 @@ services:
       - 8082:8082
     volumes:
       - ./data:/data
+      - ./spark/apps:/spark_apps
+      - ./spark/jars:/spark_jars
     networks:
       spark_net:
         ipv4_address: 172.28.1.3
