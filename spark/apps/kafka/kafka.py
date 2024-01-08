@@ -42,6 +42,14 @@ def persist_to_hbase(batch_df, batch_id):
                 b'info:app_id': (collect.app_id),
                 b'info:app_name': (collect.app_name),
                 b'info:shopify_domain': (collect.shopify_domain),
+                b'info:event': (collect.event),
+                b'info:detail': (collect.detail),
+                b'info:cursor': (collect.cursor),
+                b'info:occurred_at': (collect.occurred_at),
+                b'info:subscription_id': (collect.subscription_id),
+                b'info:created_at': (collect.created_at),
+                b'info:billing_on': (collect.billing_on),
+                b'info:app_credit_id': (collect.app_credit_id),
             }
         )
     
@@ -83,6 +91,14 @@ if __name__ == "__main__":
         StructField("app_id", StringType()),
         StructField("app_name", StringType()),
         StructField("shopify_domain", StringType()),
+        StructField("event", StringType()),
+        StructField("detail", StringType()),
+        StructField("cursor", StringType()),
+        StructField("occurred_at", StringType()),
+        StructField("subscription_id", StringType()),
+        StructField("created_at", StringType()),
+        StructField("billing_on", StringType()),
+        StructField("app_credit_id", StringType()),
     ])
 
     # query = df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)") \
