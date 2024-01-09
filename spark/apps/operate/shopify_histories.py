@@ -49,9 +49,9 @@ def persist_to_hbase(batch_df, batch_id):
     table = create_table(hconn, TABLE_NAME)
 
     for collect in batch_df.collect():
-        if collect.op == "d":
+        if collect.op == "d" :
             table.delete(collect.id)
-        else:
+        else :
             table.put(
                 (collect.id), 
                 {
