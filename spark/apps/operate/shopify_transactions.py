@@ -52,11 +52,11 @@ def persist_to_hbase(batch_df, batch_id):
     table = create_table(hconn, TABLE_NAME)
 
     for collect in batch_df.collect():
-    	if collect.op == "d" :
-    		table.delete(collect.id)
-		else :
-	        table.put(
-	            (collect.id), 
+        if collect.op == "d" :
+            table.delete(collect.id)
+        else :
+            table.put(
+                (collect.id), 
 	            {
 	                'info:id': (collect.id),
 	                'info:shop_id': (collect.shop_id),
