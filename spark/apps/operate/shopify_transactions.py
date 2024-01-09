@@ -52,28 +52,28 @@ def persist_to_hbase(batch_df, batch_id):
     table = create_table(hconn, TABLE_NAME)
 
     for collect in batch_df.collect():
-    	if(collect.op == 'd'):
+    	if collect.op == "d":
     		table.delete(collect.id)
 		else:
 	        table.put(
 	            (collect.id), 
 	            {
-	                b'info:id': (collect.id),
-	                b'info:shop_id': (collect.shop_id),
-	                b'info:app_id': (collect.app_id),
-	                b'info:app_name': (collect.app_name),
-	                b'info:shopify_domain': (collect.shopify_domain),
-	                b'info:event': (collect.event),
-	                b'info:charge_id': (collect.charge_id),
-	                b'info:charge_amount': (collect.charge_amount),
-	                b'info:charge_created_at': (collect.charge_created_at),
-	                b'info:billing_interval': (collect.billing_interval),
-	                b'info:cursor': (collect.cursor),
-	                b'info:gross_amount': (collect.gross_amount),
-	                b'info:net_amount': (collect.net_amount),
-	                b'info:shopify_fee': (collect.shopify_fee),
-	                b'info:processing_fee': (collect.processing_fee),
-	                b'info:regulatory_operating_fee': (collect.regulatory_operating_fee),
+	                'info:id': (collect.id),
+	                'info:shop_id': (collect.shop_id),
+	                'info:app_id': (collect.app_id),
+	                'info:app_name': (collect.app_name),
+	                'info:shopify_domain': (collect.shopify_domain),
+	                'info:event': (collect.event),
+	                'info:charge_id': (collect.charge_id),
+	                'info:charge_amount': (collect.charge_amount),
+	                'info:charge_created_at': (collect.charge_created_at),
+	                'info:billing_interval': (collect.billing_interval),
+	                'info:cursor': (collect.cursor),
+	                'info:gross_amount': (collect.gross_amount),
+	                'info:net_amount': (collect.net_amount),
+	                'info:shopify_fee': (collect.shopify_fee),
+	                'info:processing_fee': (collect.processing_fee),
+	                'info:regulatory_operating_fee': (collect.regulatory_operating_fee),
 	            }
 	        )
     

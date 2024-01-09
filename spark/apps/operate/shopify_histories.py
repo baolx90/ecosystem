@@ -49,25 +49,25 @@ def persist_to_hbase(batch_df, batch_id):
     table = create_table(hconn, TABLE_NAME)
 
     for collect in batch_df.collect():
-        if(collect.op == 'd'):
+        if collect.op == "d":
             table.delete(collect.id)
         else:
             table.put(
                 (collect.id), 
                 {
-                    b'info:id': (collect.id),
-                    b'info:shop_id': (collect.shop_id),
-                    b'info:app_id': (collect.app_id),
-                    b'info:app_name': (collect.app_name),
-                    b'info:shopify_domain': (collect.shopify_domain),
-                    b'info:event': (collect.event),
-                    b'info:detail': (collect.detail),
-                    b'info:cursor': (collect.cursor),
-                    b'info:occurred_at': (collect.occurred_at),
-                    b'info:subscription_id': (collect.subscription_id),
-                    b'info:created_at': (collect.created_at),
-                    b'info:billing_on': (collect.billing_on),
-                    b'info:app_credit_id': (collect.app_credit_id),
+                    'info:id': (collect.id),
+                    'info:shop_id': (collect.shop_id),
+                    'info:app_id': (collect.app_id),
+                    'info:app_name': (collect.app_name),
+                    'info:shopify_domain': (collect.shopify_domain),
+                    'info:event': (collect.event),
+                    'info:detail': (collect.detail),
+                    'info:cursor': (collect.cursor),
+                    'info:occurred_at': (collect.occurred_at),
+                    'info:subscription_id': (collect.subscription_id),
+                    'info:created_at': (collect.created_at),
+                    'info:billing_on': (collect.billing_on),
+                    'info:app_credit_id': (collect.app_credit_id),
                 }
             )
     
