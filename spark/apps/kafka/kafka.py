@@ -10,7 +10,7 @@ import time
 
 kafka_options = {
     "kafka.bootstrap.servers": "192.168.1.96:9092",
-    "subscribe": "operate.public.shopify_histories",
+    "subscribe": "operate.public.shopify_transactions",
     "startingOffsets": "earliest"
 }
 
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     #     .option("path","hdfs://master:9000/usr/hive/warehouse/test_data") \
     #     .start()
     # query.awaitTermination()
-    schema = StructType([ \
+    schema = StructType([
         StructField("id", StringType()),
         StructField("shop_id", StringType()),
         StructField("app_id", StringType()),
@@ -94,10 +94,10 @@ if __name__ == "__main__":
         StructField("event", StringType()),
         StructField("detail", StringType()),
         StructField("cursor", StringType()),
-        StructField("occurred_at", StringType()),
+        StructField("occurred_at", TimestampType()),
         StructField("subscription_id", StringType()),
-        StructField("created_at", StringType()),
-        StructField("billing_on", StringType()),
+        StructField("created_at", TimestampType()),
+        StructField("billing_on", TimestampType()),
         StructField("app_credit_id", StringType()),
     ])
 
@@ -142,9 +142,12 @@ if __name__ == "__main__":
         .withColumn("after",from_json(col("after"),schema))\
         .select("after.*")
 
-    query = payload_df.writeStream.format("console") \
-        .outputMode("append").foreachBatch(persist_to_hbase).start()
-    query.awaitTermination()
+    query = payload_df.writeStream\
+        .format("console") \
+        .outputMode("append")\
+        .foreachBatch(persist_to_hbase)\
+        .start()\
+        .awaitTermination()
 
 
     # for k in payload_df.collect():
