@@ -13,7 +13,7 @@ kafka_options = {
     "startingOffsets": "earliest"
 }
 HBASE_URL = '192.168.1.96'
-#HBASE_URL = 'localhost'
+# HBASE_URL = 'localhost'
 TABLE_NAME = 'shopify_transactions'
 hconn = happybase.Connection(HBASE_URL, autoconnect=False)
 
@@ -21,19 +21,20 @@ SCHEMA_DATA = StructType([
     StructField("id", StringType()),
     StructField("shop_id", StringType()),
     StructField("app_id", StringType()),
+    StructField("subscription_id", StringType()),
     StructField("app_name", StringType()),
     StructField("shopify_domain", StringType()),
     StructField("event", StringType()),
     StructField("charge_id", StringType()),
-    StructField("charge_amount", DoubleType()),
+    StructField("charge_amount", DecimalType(18,2)),
     StructField("charge_created_at", StringType()),
     StructField("billing_interval", StringType()),
     StructField("cursor", StringType()),
-    StructField("gross_amount", DoubleType()),
-    StructField("net_amount", DoubleType()),
-    StructField("shopify_fee", DoubleType()),
-    StructField("processing_fee", DoubleType()),
-    StructField("regulatory_operating_fee", DoubleType())
+    StructField("gross_amount", DecimalType(18,2)),
+    StructField("net_amount", DecimalType(18,2)),
+    StructField("shopify_fee", DecimalType(18,2)),
+    StructField("processing_fee", DecimalType(18,2)),
+    StructField("regulatory_operating_fee", DecimalType(18,2))
 ])
 
 def create_table(hconn, table_name):
@@ -61,6 +62,7 @@ def persist_to_hbase(batch_df, batch_id):
 	                'info:id': (collect.id),
 	                'info:shop_id': (collect.shop_id),
 	                'info:app_id': (collect.app_id),
+	                'info:subscription_id': (collect.subscription_id),
 	                'info:app_name': (collect.app_name),
 	                'info:shopify_domain': (collect.shopify_domain),
 	                'info:event': (collect.event),
@@ -90,7 +92,7 @@ if __name__ == "__main__":
         .getOrCreate()
     
     df = spark\
-        .readStream\
+        .read\
         .format("kafka")\
         .options(**kafka_options)\
         .load()
@@ -107,9 +109,10 @@ if __name__ == "__main__":
 
     payload_df = payload_df.withColumn('charge_created_at', from_unixtime(payload_df.charge_created_at/1000, "yyyy-MM-dd HH:mm:ss"))
 
-    query = payload_df.writeStream\
-        .format("console") \
-        .outputMode("append")\
-        .foreachBatch(persist_to_hbase)\
-        .start()\
-        .awaitTermination()
+    persist_to_hbase(payload_df, 123)
+    # query = payload_df.writeStream\
+    #     .format("console") \
+    #     .outputMode("append")\
+    #     .foreachBatch(persist_to_hbase)\
+    #     .start()\
+    #     .awaitTermination()
