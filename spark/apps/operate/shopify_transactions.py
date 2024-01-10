@@ -26,15 +26,15 @@ SCHEMA_DATA = StructType([
     StructField("shopify_domain", StringType()),
     StructField("event", StringType()),
     StructField("charge_id", StringType()),
-    StructField("charge_amount", DecimalType(18,2)),
+    StructField("charge_amount", StringType()),
     StructField("charge_created_at", StringType()),
     StructField("billing_interval", StringType()),
     StructField("cursor", StringType()),
-    StructField("gross_amount", DecimalType(18,2)),
-    StructField("net_amount", DecimalType(18,2)),
-    StructField("shopify_fee", DecimalType(18,2)),
-    StructField("processing_fee", DecimalType(18,2)),
-    StructField("regulatory_operating_fee", DecimalType(18,2))
+    StructField("gross_amount", StringType()),
+    StructField("net_amount", StringType()),
+    StructField("shopify_fee", StringType()),
+    StructField("processing_fee", StringType()),
+    StructField("regulatory_operating_fee", StringType())
 ])
 
 def create_table(hconn, table_name):
