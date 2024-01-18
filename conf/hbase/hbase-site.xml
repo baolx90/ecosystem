@@ -29,4 +29,12 @@
     <name>zookeeper.znode.parent</name>
     <value>/hbase</value>
   </property>
+  <property>
+    <name>hbase.regionserver.thrift.http</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>hbase.thrift.support.proxyuser</name>
+    <value>false</value>
+  </property>
 </configuration>

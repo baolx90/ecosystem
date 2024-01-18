@@ -12,10 +12,6 @@
         <name>yarn.resourcemanager.hostname</name>
         <value>master</value>
     </property>
-    <property>
-        <name>yarn.nodemanager.resource.cpu-vcores</name>
-        <value>8</value>
-    </property>
 
     <!-- Shuffle service that needs to be set for Map Reduce applications. -->
     <property>
@@ -34,7 +30,7 @@
      this property should be lower than the total memory of that machine. -->
     <property>
         <name>yarn.nodemanager.resource.memory-mb</name>
-        <value>8192</value>
+        <value>12288</value>
     </property>
 
     <!-- Resource manager can only allocate memory to containers in increments
@@ -80,11 +76,30 @@
         <name>yarn.nodemanager.vmem-check-enabled</name>
         <value>false</value>
     </property>
-
+    <property>
+        <name>yarn.nodemanager.pmem-check-enabled</name>
+        <value>false</value>
+    </property>
     <property>
         <description>To enable RM web ui2 application.</description>
         <name>yarn.webapp.ui2.enable</name>
         <value>true</value>
     </property>
+	<property>
+        <name>yarn.nodemanager.pmem-check-enabled</name>
+        <value>false</value>
+    </property>
+
+    <!--  -->
+    <property>
+        <name>yarn.log-aggregation-enable</name>
+        <value>true</value>
+    </property>
+    <!--  -->
+    <property>
+        <name>yarn.log-aggregation.retain-seconds</name>
+        <value>604800</value>
+    </property>
+
 
 </configuration>
