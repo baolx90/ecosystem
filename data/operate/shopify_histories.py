@@ -12,8 +12,8 @@ kafka_options = {
     "subscribe": "operate.public.shopify_histories",
     "startingOffsets": "earliest"
 }
-#HBASE_URL = '192.168.1.96'
-HBASE_URL = 'localhost'
+HBASE_URL = '192.168.1.96'
+#HBASE_URL = 'localhost'
 TABLE_NAME = 'shopify_histories'
 hconn = happybase.Connection(HBASE_URL, autoconnect=False)
 
@@ -83,7 +83,7 @@ if __name__ == "__main__":
         .getOrCreate()
 
     df = spark\
-        .read\
+        .readStream\
         .format("kafka")\
         .options(**kafka_options)\
         .load()
@@ -102,10 +102,10 @@ if __name__ == "__main__":
         .withColumn('created_at', from_unixtime(payload_df.created_at/1000, "yyyy-MM-dd HH:mm:ss"))\
         .withColumn('billing_on', from_unixtime(payload_df.billing_on/1000, "yyyy-MM-dd HH:mm:ss"))
 
-    persist_to_hbase(payload_df, 123)
-    # query = payload_df.writeStream\
-    #     .format("console") \
-    #     .outputMode("append")\
-    #     .foreachBatch(persist_to_hbase)\
-    #     .start()\
-    #     .awaitTermination()
+    # persist_to_hbase(payload_df, 123)
+    query = payload_df.writeStream\
+        .format("console") \
+        .outputMode("append")\
+        .foreachBatch(persist_to_hbase)\
+        .start()\
+        .awaitTermination()
