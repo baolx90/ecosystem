@@ -1,4 +1,6 @@
-data/*
-map_reduce/*
-spark/data/*
-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
+# IDE garbage
+.idea/
+
+# Spark job results
+data/output/
+/logs/*
