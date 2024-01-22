@@ -42,7 +42,7 @@
     run concurrently. -->
     <property>
         <name>yarn.scheduler.maximum-allocation-mb</name>
-        <value>2048</value>
+        <value>8192</value>
     </property>
     <property>
         <name>yarn.scheduler.minimum-allocation-mb</name>
