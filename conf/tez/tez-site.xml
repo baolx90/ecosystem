@@ -15,11 +15,11 @@
 	</property>
 	<property>
 		 <name>tez.am.resource.cpu.vcores</name>
-		 <value>2</value>
+		 <value>1</value>
 	</property>
 	<property>
 		 <name>tez.container.max.java.heap.fraction</name>
-		 <value>0.8</value>
+		 <value>0.4</value>
 	</property>
 	<property>
 		 <name>tez.task.resource.memory.mb</name>
@@ -27,7 +27,11 @@
 	</property>
 	<property>
 		 <name>tez.task.resource.cpu.vcores</name>
-		 <value>2</value>
+		 <value>1</value>
+	</property>
+	<property>
+		<name>tez.session.am.dag.submit.timeout.secs</name>
+		<value>10</value>
 	</property>
 	<property>
 		 <name>tez.history.logging.service.class</name>        

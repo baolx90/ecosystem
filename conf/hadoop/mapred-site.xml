@@ -9,6 +9,10 @@
         <value>yarn</value>
     </property>
 
+    <property>
+        <name>mapred.max.split.size</name>
+        <value>2</value>
+    </property>
     <!-- https://hadoop.apache.org/docs/r3.1.2/hadoop-yarn/hadoop-yarn-site/ResourceModel.html -->
     <!-- The amount of memory a container needs to run MR Application Master -->
     <property>

@@ -109,14 +109,6 @@
     </property>
 	<!-- To Close ACID -->
     <property>
-        <name>hive.strict.managed.tables</name>
-        <value>false</value>
-    </property>
-    <property>
-        <name>hive.create.as.insert.only</name>
-        <value>false</value>
-    </property>
-    <property>
         <name>hive.vectorized.execution.enabled</name>
         <value>false</value>
     </property>
