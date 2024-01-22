@@ -1,0 +1,36 @@
+spark-submit \
+--master yarn --deploy-mode cluster \
+--executor-memory 1G --verbose --driver-memory 512M \
+--executor-cores 1 --driver-cores 1 --num-executors 1 --queue default \
+/data/operate/shopify_histories.py
+
+spark-submit \
+--master yarn --deploy-mode cluster \
+--executor-memory 1G --verbose --driver-memory 512M \
+--executor-cores 1 --driver-cores 1 --num-executors 1 --queue default \
+/data/operate/shopify_transactions.py
+
+spark-submit \
+--master yarn --deploy-mode cluster \
+--executor-memory 1G --verbose --driver-memory 512M \
+--executor-cores 1 --driver-cores 1 --num-executors 1 --queue default \
+/data/operate/shopify_app_credits.py
+
+
+sqoop list-tables \
+--connect jdbc:postgresql://192.168.90.22:5432/socialhead_operate_lumen --username postgres --password d9enrFU5wc6H
+
+
+
+sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
+--connect jdbc:postgresql://192.168.90.22:5432/socialhead_operate_lumen \
+--username postgres --password d9enrFU5wc6H \
+--table users \
+--fields-terminated-by '\t' \
+--lines-terminated-by '\n' \
+--hive-import \
+--hive-table users_hive \
+--hive-overwrite \
+--split-by id
+
+hdfs dfs -ls /users_export

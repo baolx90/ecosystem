@@ -50,6 +50,10 @@
     	<name>hive.tez.container.size</name>
         <value>1024</value>
     </property>
+    <property>
+        <name>tez.session.am.dag.submit.timeout.secs</name>
+        <value>6000</value>
+    </property>
     <!--Postgres metastore service-->
 	<property>
         <name>hive.metastore.uris</name>
@@ -110,6 +114,14 @@
     </property>
     <property>
         <name>hive.create.as.insert.only</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>hive.vectorized.execution.enabled</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>hive.vectorized.execution.reduce.enabled</name>
         <value>false</value>
     </property>
     <property>
