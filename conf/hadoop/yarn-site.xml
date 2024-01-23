@@ -26,7 +26,7 @@
     <!-- Memory and CPU constraints -->
     <property>
         <name>yarn.app.mapreduce.am.resource.memory-mb</name>
-        <value>2048</value>
+        <value>4096</value>
     </property>
 
     <!-- Amount of physical memory, in MB, that can be allocated for containers.
@@ -46,7 +46,7 @@
     run concurrently. -->
     <property>
         <name>yarn.scheduler.maximum-allocation-mb</name>
-        <value>2048</value>
+        <value>8192</value>
     </property>
     <property>
         <name>yarn.scheduler.minimum-allocation-mb</name>

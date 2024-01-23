@@ -18,7 +18,6 @@ select
 from 		get_histories_1
 where 	event in ('RELATIONSHIP_DEACTIVATED', 'RELATIONSHIP_REACTIVATED', 'RELATIONSHIP_INSTALLED', 'RELATIONSHIP_UNINSTALLED')
 )
-select * from elm_id_1
 , get_histories AS
 (
 select 		*
@@ -26,7 +25,6 @@ from 			shopify_histories
 WHERE			app_name not in ('social_publish','social_reply','chatalyst','messent','alihunter','salesbox')
 					and from_utc_timestamp(occurred_at, 'GMT+7') >= from_utc_timestamp(from_unixtime(unix_timestamp()), 'GMT+7')
 )
-select * from get_histories
 , get_transactions AS
 (
 select 		*
@@ -34,21 +32,18 @@ from 			shopify_transactions
 WHERE			app_name not in ('social_publish','social_reply','chatalyst','messent','alihunter','salesbox')
 					and from_utc_timestamp(occurred_at, 'GMT+7') >= from_utc_timestamp(from_unixtime(unix_timestamp()), 'GMT+7')
 )
-select * from get_transactions
 , caution_shop_id AS
 (
 select 		*
 from  elm_id_1
 where 		caution_flag =1
 )
-select * from caution_shop_id
 , pre_histories AS
 (select 	id, shop_id, shopify_domain, app_name, event, occurred_at
 FROM			get_histories h
 WHERE 		event in ('RELATIONSHIP_DEACTIVATED', 'RELATIONSHIP_REACTIVATED', 'RELATIONSHIP_INSTALLED', 'RELATIONSHIP_UNINSTALLED')
 					--and h.app_name not in ('social_publish','social_reply','chatalyst','messent','alihunter','salesbox')
 )
-select * from pre_histories
 , union_all AS
 (
 		select
@@ -75,7 +70,6 @@ select * from pre_histories
 							gross_amount >= 0
 
 		)
-select * from union_all
  , get_flag AS
 (
 select
@@ -102,7 +96,6 @@ select
 								end 	net_earning_amt
 FROM 			union_all u
 )
-select * from get_flag
 SELECT 			 from_utc_timestamp(from_unixtime(unix_timestamp()), 'GMT+7') as run_date
 					, date_format(date_event, 'yyyy') as year_event
 					, date_format(date_event, 'MM') as month_event
