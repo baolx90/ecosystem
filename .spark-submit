@@ -1,17 +1,14 @@
 spark-submit \
---master yarn --deploy-mode cluster \
 --executor-memory 1G --verbose --driver-memory 512M \
 --executor-cores 1 --driver-cores 1 --num-executors 1 --queue default \
 /data/operate/shopify_histories.py
 
 spark-submit \
---master yarn --deploy-mode cluster \
 --executor-memory 1G --verbose --driver-memory 512M \
 --executor-cores 1 --driver-cores 1 --num-executors 1 --queue default \
 /data/operate/shopify_transactions.py
 
 spark-submit \
---master yarn --deploy-mode cluster \
 --executor-memory 1G --verbose --driver-memory 512M \
 --executor-cores 1 --driver-cores 1 --num-executors 1 --queue default \
 /data/operate/shopify_app_credits.py
@@ -53,8 +50,17 @@ sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
 --fields-terminated-by '\t' \
 --lines-terminated-by '\n' \
 --hive-import \
---hive-table shopify_histories \
+--hive-table shopify_histories_hive \
 --hive-overwrite \
 --split-by id
 
-hdfs dfs -ls /users_export
+sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
+--connect jdbc:postgresql://192.168.93.40:5432/shtracking \
+--username postgres --password F9StWkfty5KvAW93 \
+--table shopify_transactions \
+--fields-terminated-by '\t' \
+--lines-terminated-by '\n' \
+--hive-import \
+--hive-table shopify_transactions_hive \
+--hive-overwrite \
+--split-by id

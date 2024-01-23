@@ -44,7 +44,7 @@
     </property>
     <property>
         <name>hive.execution.engine</name>
-        <value>tez</value>
+        <value>spark</value>
     </property>
     <property>
     	<name>hive.tez.container.size</name>
