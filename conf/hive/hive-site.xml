@@ -48,7 +48,7 @@
     </property>
     <property>
     	<name>hive.tez.container.size</name>
-        <value>2048</value>
+        <value>10240MB</value>
     </property>
     <!--Postgres metastore service-->
 	<property>
