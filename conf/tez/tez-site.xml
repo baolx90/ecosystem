@@ -15,11 +15,11 @@
 	</property>
 	<property>
 		 <name>tez.am.resource.memory.mb</name>
-		 <value>4096</value>
+		 <value>1024</value>
 	</property>
 	<property>
 		 <name>tez.am.resource.cpu.vcores</name>
-		 <value>4</value>
+		 <value>1</value>
 	</property>
 	<property>
 		 <name>tez.container.max.java.heap.fraction</name>
@@ -27,11 +27,11 @@
 	</property>
 	<property>
 		 <name>tez.task.resource.memory.mb</name>
-		 <value>4096</value>
+		 <value>1024</value>
 	</property>
 	<property>
 		 <name>tez.task.resource.cpu.vcores</name>
-		 <value>4</value>
+		 <value>1</value>
 	</property>
 	<property>
 		<name>tez.session.am.dag.submit.timeout.secs</name>
@@ -42,4 +42,3 @@
 		 <value>org.apache.tez.dag.history.logging.ats.ATSHistoryLoggingService</value>
 	</property>
 </configuration>
-

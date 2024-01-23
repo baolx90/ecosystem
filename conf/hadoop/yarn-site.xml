@@ -24,10 +24,6 @@
     </property>
 
     <!-- Memory and CPU constraints -->
-    <property>
-        <name>yarn.app.mapreduce.am.resource.memory-mb</name>
-        <value>4096</value>
-    </property>
 
     <!-- Amount of physical memory, in MB, that can be allocated for containers.
      It means the amount of memory YARN can utilize on this node and therefore
@@ -89,7 +85,7 @@
         <name>yarn.webapp.ui2.enable</name>
         <value>true</value>
     </property>
-	<property>
+    <property>
         <name>yarn.nodemanager.pmem-check-enabled</name>
         <value>false</value>
     </property>

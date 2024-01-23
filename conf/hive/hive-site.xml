@@ -47,11 +47,11 @@
         <value>mr</value>
     </property>
     <property>
-    	<name>hive.tez.container.size</name>
-        <value>4096</value>
+        <name>hive.tez.container.size</name>
+        <value>2048</value>
     </property>
     <!--Postgres metastore service-->
-	<property>
+    <property>
         <name>hive.metastore.uris</name>
         <value>thrift://master:9083</value>
     </property>
@@ -63,8 +63,8 @@
         <name>hive.server2.thrift.http.port</name>
         <value>10001</value>
     </property>
-	<!-- default metastore spark -->
-	<property>
+    <!-- default metastore spark -->
+    <property>
         <name>metastore.catalog.default</name>
         <value>hive</value>
     </property>
@@ -89,9 +89,9 @@
             Hive operations as the user making the calls to it.
         </description>
     </property>
-	
-	<!-- To solve NucleusException: Attempt to invoke the "HikariCP" plugin -->
-	<property>
+    
+    <!-- To solve NucleusException: Attempt to invoke the "HikariCP" plugin -->
+    <property>
         <name>datanucleus.connectionPoolingType</name>
         <value>dbcp</value>
         <description>
@@ -103,7 +103,7 @@
         <name>hive.server2.authentication</name>
         <value>NONE</value>
     </property>
-	<!-- To Close ACID -->
+    <!-- To Close ACID -->
     <property>
         <name>hive.vectorized.execution.enabled</name>
         <value>false</value>
@@ -116,7 +116,7 @@
         <name>metastore.create.as.acid</name>
         <value>false</value>
     </property>
-	<property>
+    <property>
     <!-- trino support Metastore configuration for Avro https://trino.io/docs/current/connector/hive.html -->
         <name>metastore.storage.schema.reader.impl</name>
         <value>org.apache.hadoop.hive.metastore.SerDeStorageSchemaReader</value>
