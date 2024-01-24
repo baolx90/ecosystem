@@ -52,7 +52,7 @@ sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
 --fields-terminated-by '\t' \
 --lines-terminated-by '\n' \
 --hive-import \
---hive-table shopify_histories \
+--hive-table hive_shopify_histories \
 --hive-overwrite \
 --split-by id
 
@@ -74,3 +74,5 @@ sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
 create 'shopify_histories', 'info'
 create 'shopify_transactions', 'info'
 create 'shopify_app_credits', 'info'
+
+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
