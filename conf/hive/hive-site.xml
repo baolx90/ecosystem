@@ -133,4 +133,8 @@
         <name>hive.bin.strict.locking.mode</name>
         <value>false</value>
     </property>
+    <property>
+        <name>hive.cbo.enable</name>
+        <value>true</value>
+    </property>
 </configuration>
