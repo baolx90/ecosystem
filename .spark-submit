@@ -38,7 +38,9 @@ sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
 --fields-terminated-by '\t' \
 --lines-terminated-by '\n' \
 --hive-import \
---hive-table users_hive \
+--hive-table users \
+--where "app_name = 'alireviews'" \
+--target-dir /wherequery \
 --hive-overwrite \
 --split-by id
 
@@ -67,3 +69,5 @@ sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
 
 
 7136572
+
+

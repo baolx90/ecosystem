@@ -26,6 +26,31 @@
         <name>mapred.max.split.size</name>
         <value>16777216</value>
     </property>
+
+    <property>
+        <name>mapred_child_java_opts</name>
+        <value>-Xmx4G</value>
+    </property>
+
+    <property>
+        <name>mapreduce.map.memory.mb</name>
+        <value>4096</value>
+    </property>
+
+    <property>
+        <name>mapreduce.reduce.memory.mb</name>
+        <value>8192</value>
+    </property>
+
+    <property>
+        <name>mapreduce.map.java.opts</name>
+        <value>-Xmx3G</value>
+    </property>
+
+    <property>
+        <name>mapreduce.reduce.java.opts</name>
+        <value>-Xmx3G</value>
+    </property>
     <!-- https://hadoop.apache.org/docs/r3.1.2/hadoop-yarn/hadoop-yarn-site/ResourceModel.html -->
     <!-- The amount of memory a container needs to run MR Application Master -->
     <property>
