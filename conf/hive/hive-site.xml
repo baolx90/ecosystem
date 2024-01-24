@@ -121,4 +121,16 @@
         <name>metastore.storage.schema.reader.impl</name>
         <value>org.apache.hadoop.hive.metastore.SerDeStorageSchemaReader</value>
     </property>
+    <property>
+        <name>hive.support.concurrency</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>hive.txn.manager</name>
+        <value>org.apache.hadoop.hive.ql.lockmgr.DummyTxnManager</value>
+    </property>
+    <property>
+        <name>hive.bin.strict.locking.mode</name>
+        <value>false</value>
+    </property>
 </configuration>

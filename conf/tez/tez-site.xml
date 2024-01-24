@@ -15,7 +15,7 @@
 	</property>
 	<property>
 		 <name>tez.am.resource.memory.mb</name>
-		 <value>1024</value>
+		 <value>2048</value>
 	</property>
 	<property>
 		 <name>tez.am.resource.cpu.vcores</name>
@@ -27,7 +27,7 @@
 	</property>
 	<property>
 		 <name>tez.task.resource.memory.mb</name>
-		 <value>1024</value>
+		 <value>2048</value>
 	</property>
 	<property>
 		 <name>tez.task.resource.cpu.vcores</name>

@@ -50,7 +50,7 @@ sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
 --fields-terminated-by '\t' \
 --lines-terminated-by '\n' \
 --hive-import \
---hive-table shopify_histories_hive \
+--hive-table shopify_histories \
 --hive-overwrite \
 --split-by id
 
@@ -61,6 +61,9 @@ sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
 --fields-terminated-by '\t' \
 --lines-terminated-by '\n' \
 --hive-import \
---hive-table shopify_transactions_hive \
+--hive-table shopify_transactions \
 --hive-overwrite \
 --split-by id
+
+
+7136572
