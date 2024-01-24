@@ -19,7 +19,7 @@
 	</property>
 	<property>
 		 <name>tez.am.resource.cpu.vcores</name>
-		 <value>1</value>
+		 <value>2</value>
 	</property>
 	<property>
 		 <name>tez.container.max.java.heap.fraction</name>
@@ -31,7 +31,7 @@
 	</property>
 	<property>
 		 <name>tez.task.resource.cpu.vcores</name>
-		 <value>1</value>
+		 <value>2</value>
 	</property>
 	<property>
 		<name>tez.session.am.dag.submit.timeout.secs</name>
