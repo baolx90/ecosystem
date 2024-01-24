@@ -71,3 +71,6 @@ sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
 7136572
 
 
+create 'shopify_histories', 'info'
+create 'shopify_transactions', 'info'
+create 'shopify_app_credits', 'info'
